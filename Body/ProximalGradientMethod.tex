@@ -17,7 +17,7 @@
     对于一个凸函数$h(x)$，定义它的临近算子为
 
     \begin{equation}
-        \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h}\{h(u)+\frac{1}{2}\|u-x\|^{2}\}.
+        \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)}\{h(u)+\frac{1}{2}\|u-x\|^{2}\}.
     \end{equation}
 
 \end{definition}
@@ -25,14 +25,14 @@
 如果想进一步基于临近算子的概念定义临近梯度，并用于优化问题的求解，必须证明上述定义的临近算子唯一存在，这样对于一个给定的凸优化问题，其最优解才是唯一的。
 
 \begin{theorem}\label{thm_prox_1}
-    如果$h(x)$是一个定义在$\mathbb{R}^{n}$上的适当的闭凸函数，则对任意的$x\in \mathbb{R}^{n}$，$\mathop{\mathrm{prox_{h}}}(x)$的值唯一存在
+    如果$h(x)$是一个定义在$\mathbb{R}^{n}$上的适当的闭凸函数，则对任意的$x\in \mathbb{R}^{n}$，$\mathop{\mathrm{prox_{h}}}(x)$的值唯一存在。
 \end{theorem}
 
 \begin{proof}
     假设$h(x)$至少在定义域内存在一点存在次梯度$\bm{g}$，由次梯度的定义可以得到
 
     \begin{equation}
-        h(u)\geq h(v)+\langle \bm{g}, u-v\rangle, v\in \mathop{\mathrm{dom}h}.
+        h(u)\geq h(v)+\langle \bm{g}, u-v\rangle, v\in \mathop{\mathrm{dom} (h)}.
     \end{equation}
 
     定义辅助函数
@@ -69,8 +69,8 @@
     \begin{equation}
         \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathbb{R}^{n}}
         \begin{cases}
-            tu + \frac{1}{2}(u-x)^{2}, u>0      \\
-            -tu + \frac{1}{2}(u-x)^{2}, u\leq 0 \\
+            tu + \frac{1}{2}(u-x)^{2}, u>0      ,\\
+            -tu + \frac{1}{2}(u-x)^{2}, u\leq 0 .\\
         \end{cases}
     \end{equation}
 
@@ -84,7 +84,7 @@
         \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{sgn}}(x)\max\{|x|-t, 0\}.
     \end{equation}
     
-    其中，\mathop{\mathrm{sgn}}(x)的定义与函数图像如下。
+    其中，$\mathop{\mathrm{sgn}}(x)$的定义与函数图像如下。
     \begin{definition}
         对于$\mathop{\mathrm{sgn}}(x)$，定义
         \begin{equation}
@@ -128,8 +128,8 @@
 
 \begin{equation}
     \begin{cases}
-        y^{k+1} = x^{k} - \alpha_{k}\nabla g(x^{k}) \\
-        x^{k+1} = \mathop{\mathrm{prox_{\alpha_{k} h}}}(y^{k+1})
+        y^{k+1} = x^{k} - \alpha_{k}\nabla g(x^{k}) ;\\
+        x^{k+1} = \mathop{\mathrm{prox_{\alpha_{k} h}}}(y^{k+1}).
     \end{cases}
 \end{equation}
 
@@ -166,8 +166,8 @@
 
 \begin{equation}
     \begin{split}
-        x^{k+1} &=  \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h}\{\alpha_{k}h(u) + \frac{1}{2}\|u-(x^{k}-\alpha_{k}\nabla g(x^{k}))\|^{2}\} \\
-                &= \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h} \{h(u)+g(x^{k})+\langle \nabla g(x^{k}), u-x^{k} \rangle + \frac{1}{2\alpha_{k}}\|u-x^{k}\|^{2}\}.
+        x^{k+1} &=  \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)}\{\alpha_{k}h(u) + \frac{1}{2}\|u-(x^{k}-\alpha_{k}\nabla g(x^{k}))\|^{2}\} \\
+                &= \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)} \{h(u)+g(x^{k})+\langle \nabla g(x^{k}), u-x^{k} \rangle + \frac{1}{2\alpha_{k}}\|u-x^{k}\|^{2}\}.
     \end{split}
 \end{equation}
 
@@ -198,12 +198,12 @@
         g(x-\alpha\tilde{\nabla} g(x)) \leq g(x) - \alpha \langle \nabla g(x), y-x \rangle \tilde{\nabla} g(x) + \frac{\alpha}{2}\|\tilde{\nabla} g(x)\|^{2}.
     \end{equation*}
 
-    由$g(x), h(x)$为凸函数，对$\forall z \in \mathop{\mathrm{dom}} f$，有
+    由$g(x), h(x)$为凸函数，对$\forall z \in \mathop{\mathrm{dom}} (f)$，有
     \begin{equation*}
         g(x) \leq g(z) - \langle \nabla g(x), z-x  \rangle.
     \end{equation*}
 
-    整理可得，对$\forall z \in \mathop{\mathrm{dom}} f$，有
+    整理可得，对$\forall z \in \mathop{\mathrm{dom}} (f)$，有
     \begin{equation*}
         f(x-\alpha\tilde{\nabla} g(x)) \leq f(z) + \langle \tilde{\nabla}g(x), z-x \rangle - \frac{\alpha}{2}\|\tilde{\nabla} g(x)\|^{2}.
     \end{equation*}

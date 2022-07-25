@@ -1,6 +1,6 @@
 \section{增广拉格朗日法与交替方向乘子法}
 
-本节引入增广拉格朗日函数的概念，分析增广拉格朗日法\cite{1976AugLagrange}与交替方向乘子法\cite{2017ADMM}，并使用两种方法求解具体的凸优化问题。
+本节引入增广拉格朗日函数的概念，分析增广拉格朗日法\cite{1976AugLagrange}与交替方向乘子法\cite{1975ADMMBook}，并使用两种方法求解具体的凸优化问题。
 
 \subsection{凸优化模型}
 
@@ -24,8 +24,8 @@
     \end{split}
 \end{equation}
 
-其中，$f_{1}(x), f_{2}(x)$都是适当的闭凸函数，同时$f(x)$可以被分解成两个分离的部分$f_{1}(x)$和$f_{2}(x)$，但是这两部分被线性约束结合在一起，这样的问题可以由交替方向乘子法求解。
-通过对该问题应用交替方向乘子法求解，可以分别更新$x_{1}$和$x_{2}$的参数，提高了并行计算的效率。
+其中，$f_{1}(\bm{x}), f_{2}(\bm{x})$都是适当的闭凸函数，同时$f(\bm{x})$可以被分解成两个分离的部分$f_{1}(\bm{x})$和$f_{2}(\bm{x})$，但是这两部分被线性约束结合在一起，这样的问题可以由交替方向乘子法求解。
+通过对该问题应用交替方向乘子法求解，可以分别更新$\bm{x}_{1}$和$\bm{x}_{2}$的参数，提高了并行计算的效率。
 
 \subsection{增广拉格朗日函数}
 
@@ -43,7 +43,7 @@
     L_{\beta}(\bm{x}, \lambda) = f(\bm{x}) - \lambda^{T}(\bm{Ax}-\bm{b})+\frac{\beta}{2}\|\bm{Ax}-\bm{b}\|_{2}^{2}.
 \end{equation}
 
-考虑增广拉格朗日函数\ref{eq_admm_3}，使$L_{\beta}(\bm{x}, \lambda)$值最小的点$x^{k+1}$满足
+考虑增广拉格朗日函数\ref{eq_admm_3}，使$L_{\beta}(x, \lambda)$值最小的点$x^{k+1}$满足\cite{2016ADMM}
 
 \begin{equation*}
     \nabla_{x} L_{\beta}(x^{k+1}, \lambda^{k}) = \nabla f(x^{k+1}) + \sum_{i=1}^{m} (\lambda_{i}^{k}+\beta c_{i}(x^{k+1})) \nabla c_{i}(x^{k+1}) = 0.
@@ -70,8 +70,8 @@
 
 \begin{equation}\label{eq_admm_5}
     \begin{cases}
-        \bm{x}^{k+1} &= \mathop{\mathrm{argmin}}\limits_{\bm{x}\in \mathbb{R}^{n}} L_{\beta_{k}}(\bm{x}^{k}, \lambda^{k}) \\
-        \lambda^{k+1} &= \lambda^{k} + \beta_{k} c(x^{k+1})
+        \bm{x}^{k+1} &= \mathop{\mathrm{argmin}}\limits_{\bm{x}\in \mathbb{R}^{n}} L_{\beta_{k}}(\bm{x}^{k}, \lambda^{k}) ; \\
+        \lambda^{k+1} &= \lambda^{k} + \beta_{k} c(x^{k+1}) .
     \end{cases}
 \end{equation}
 
@@ -83,13 +83,13 @@
     \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
 
     \SetAlgoLined
-    \Input{$f(x)$与其增广拉格朗日函数$L_{\beta_{k}}(x^{k}, \lambda^{k})$，初始化设置$k=0$，并且给定罚因子的更新常数$\rho > 0$}
-    \Output{最优解$x^{*}$与最优乘子$\lambda^{*}$}
+    \Input{$f(\bm{x})$与其增广拉格朗日函数$L_{\beta_{k}}(\bm{x}^{k}, \lambda^{k})$，初始化设置$k=0$，并且给定罚因子的更新常数$\rho > 0$}
+    \Output{最优解$\bm{x}^{*}$与最优乘子$\lambda^{*}$}
 
     \While{未收敛} {
-        $\bm{x}^{k+1} = \mathop{\mathrm{argmin}}\limits_{x\in \mathbb{R}^{n}} L_{\beta_{k}}(x^{k}, \lambda^{k})$
+        $\bm{x}^{k+1} = \mathop{\mathrm{argmin}}\limits_{\bm{x}\in \mathbb{R}^{n}} L_{\beta_{k}}(\bm{x}^{k}, \lambda^{k})$
         
-        $\lambda^{k+1} = \lambda^{k} + \beta_{k} c(x^{k+1})$
+        $\lambda^{k+1} = \lambda^{k} + \beta_{k} c(\bm{x}^{k+1})$
 
         $\beta_{k+1} = \rho \beta_{k}$
     }
@@ -119,8 +119,8 @@
 
 \begin{equation}
     \begin{cases}
-        \bm{x_{1}^{k+1}, x_{2}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{1}, x_{2}}} L_{\beta}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k}) \\
-        \lambda^{k+1} &= \lambda^{k} - \beta (\bm{A_{1}x_{1}^{k+1} + A_{2}x_{2}^{k+1} - b})
+        \bm{x_{1}^{k+1}, x_{2}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{1}, x_{2}}} L_{\beta}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k}); \\
+        \lambda^{k+1} &= \lambda^{k} - \beta (\bm{A_{1}x_{1}^{k+1} + A_{2}x_{2}^{k+1} - b}).
     \end{cases}
 \end{equation}
 
@@ -128,9 +128,9 @@
 
 \begin{equation}\label{eq_admm_6}
     \begin{cases}
-        \bm{x_{1}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{1}}} L_{\beta}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k}) \\
-        \bm{x_{2}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{2}}} L_{\beta}(\bm{x_{1}^{k+1}, x_{2}^{k}}, \lambda^{k}) \\
-        \lambda^{k+1} &= \lambda^{k} - \beta (\bm{A_{1}x_{1}^{k+1} + A_{2}x_{2}^{k+1} - b})
+        \bm{x_{1}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{1}}} L_{\beta}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k}) ; \\
+        \bm{x_{2}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{2}}} L_{\beta}(\bm{x_{1}^{k+1}, x_{2}^{k}}, \lambda^{k}) ; \\
+        \lambda^{k+1} &= \lambda^{k} - \beta (\bm{A_{1}x_{1}^{k+1} + A_{2}x_{2}^{k+1} - b}).
     \end{cases}
 \end{equation}
 
@@ -142,7 +142,7 @@
     \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
 
     \SetAlgoLined
-    \Input{$f(x):=f_{1}(x)+f_{2}(x)$与其增广拉格朗日函数$L_{\beta_{k}}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k})$，初始化设置$k=0$，并且给定罚因子的更新常数$\rho > 0$}
+    \Input{$f(\bm{x}):=f_{1}(\bm{x})+f_{2}(\bm{x})$与其增广拉格朗日函数$L_{\beta_{k}}(\bm{x_{1}^{k}, x_{2}^{k}}, \lambda^{k})$，初始化设置$k=0$，并且给定罚因子的更新常数$\rho > 0$}
     \Output{最优解$\bm{x_{1}}^{*}, \bm{x_{2}}^{*}$与最优乘子$\lambda^{*}$}
 
     \While{未收敛} {
@@ -189,10 +189,10 @@
     \begin{equation}
         \begin{cases}
             \bm{x_{1}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{1}}} \{ \frac{1}{2}\|\bm{Ax_{1}^{k}}-\bm{b}\|_{2}^{2} + \frac{\beta}{2}\|\bm{x^{k}} - \bm{x_{2}^{k}} -\frac{\lambda^{k}}{\beta}\|_{2}^{2} \} \\
-                             &= (\bm{A^{T}A}+\beta\bm{I})^{-1}(\bm{A^{T}b} + \beta\bm{x_{2}^{k}} - \lambda^{k}) \\
+                             &= (\bm{A^{T}A}+\beta\bm{I})^{-1}(\bm{A^{T}b} + \beta\bm{x_{2}^{k}} - \lambda^{k}) ; \\
             \bm{x_{2}^{k+1}} &= \mathop{\mathrm{argmin}}\limits_{\bm{x_{2}}} \{ \mu\|\bm{x_{2}^{k}}\|_{1} + \frac{\beta}{2} \|\bm{x_{2}^{k}}-\bm{x_{1}^{k+1}}+\frac{\lambda^{k}}{\beta}\|_{2}^{2}\} \\
-                             &= \mathop{\mathrm{prox_{\frac{\mu}{\beta}\|\cdot\|_{1}}}}(\bm{x_{1}^{k+1}} + \frac{\lambda^{k}}{\beta}) \\
-            \lambda^{k+1} &= \lambda^{k} + \beta(\bm{x_{1}^{k+1}-\bm{x_{2}^{k+1}}})
+                             &= \mathop{\mathrm{prox_{\frac{\mu}{\beta}\|\cdot\|_{1}}}}(\bm{x_{1}^{k+1}} + \frac{\lambda^{k}}{\beta}) ; \\
+            \lambda^{k+1} &= \lambda^{k} + \beta(\bm{x_{1}^{k+1}-\bm{x_{2}^{k+1}}}).
         \end{cases}
     \end{equation}
 
