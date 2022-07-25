@@ -4,7 +4,11 @@
 
 \subsection{凸优化模型}
 
-考虑凸优化问题$\min\limits_{x\in \mathbb{R}^{n}} f(x) := g(x) + h(x)$，其中函数$g(x)$是可微的且Lipschitz连续，而$h(x)$则可能是连续但不处处可微的函数。
+考虑凸优化问题
+\begin{equation}\label{eq_prox_1}
+    \min\limits_{x\in \mathbb{R}^{n}} f(x) := g(x) + h(x),
+\end{equation}
+其中函数$g(x)$是可微的且Lipschitz连续，而$h(x)$则可能是连续但不处处可微的函数。
 例如，在对优化的函数引入正则项时，就属于上述的凸优化模型，其中$h(x)=\|x\|_{1}$即$l_{1}$范数。对于这样的模型，可以采用临近梯度下降法求解最优解。
 
 在应用临近梯度下降法进行优化时，通常对Lipschitz连续的部分即$g(x)$求梯度，但对于不处处可微的$h(x)$部分在无法求解梯度时，采用求临近梯度的方式代替。
@@ -163,14 +167,12 @@
 \subsection{算法分析}
 
 首先，对于问题\ref{eq_prox_1}，临近梯度下降法实际是对非光滑部分$g(x)$在$x^{k}$处的Taylor展开再加上二次项，同时保留非光滑部分$h(x)$，对该展开式求极小来作为每次迭代的近似。
-
 \begin{equation}
     \begin{split}
         x^{k+1} &=  \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)}\{\alpha_{k}h(u) + \frac{1}{2}\|u-(x^{k}-\alpha_{k}\nabla g(x^{k}))\|^{2}\} \\
                 &= \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)} \{h(u)+g(x^{k})+\langle \nabla g(x^{k}), u-x^{k} \rangle + \frac{1}{2\alpha_{k}}\|u-x^{k}\|^{2}\}.
     \end{split}
 \end{equation}
-
 其次，临近梯度下降法对光滑的部分做显式的梯度下降，对非光滑部分根据其性质与结构使用临近算子做隐式的梯度下降进行求解。这相比一般的梯度下降法能够求解更多的问题，也是临近梯度下降法的优势。
 
 最后，考虑算法\ref{alg_prox_1}的收敛性分析。
@@ -268,7 +270,6 @@
     其中，$\alpha_{k}$表示第$k$次迭代的步长。
 
     由迭代公式\ref{eq_prox_2}，可以得到
-
     \begin{equation}
         \begin{split}
             \bm{x}^{k+1} &= \mathop{\mathrm{prox_{\alpha_{k}h}}}(\bm{x}^{k} - \alpha_{k}\nabla g(\bm{x}^{k})) \\
