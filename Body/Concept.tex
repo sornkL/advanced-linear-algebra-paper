@@ -2,19 +2,28 @@
 
 \subsection{适当函数}
 \begin{definition}
-    给定函数$f(\cdot)$和非空集合$\mathcal{X}$，如果存在$x\in \mathcal{X}$使得$f(x)< +\infty$，并且对$\forall x in \mathcal{X}$，都有$f(x) > -\infty$，那么称函数$f(\cdot)$关于集合$\mathcal{X}$是适当的
+    给定函数$f(\cdot)$和非空集合$X$，如果存在$x\in X$使得$f(x)< +\infty$，并且对$\forall x in X$，都有$f(x) > -\infty$，那么称函数$f(\cdot)$关于集合$X$是适当的。\cite{2004Convex}
 \end{definition}
 
-由定义可知，适当函数$f(\cdot)$具有在某个非空集合$\mathcal{X}$上至少有一处取值不为正无穷，并且处处不为负无穷的特点。
+由定义可知，适当函数$f(\cdot)$具有在某个非空集合$X$上至少有一处取值不为正无穷，并且处处不为负无穷的特点。
 
 此外，规定适当函数$f(\cdot)$的定义域为$\mathop{\mathrm{dom}} (f) = \{x | f(x) < +\infty\}$.
 
 \subsection{凸函数}
-首先引入凸集的概念，直观来看凸集就是任取集合中的两点，其构成的线段都在集合内就称为凸集，下面给出具体的定义。
+首先引入凸集的概念，直观来看凸集就是任取集合中的两点，其构成的线段都在集合内就称为凸集\cite{2004Convex}，下面给出具体的定义。
 
 \begin{definition}
-    给定集合$C$，对$\forall x_{1}, x_{2}\in C$，如果对$0 \leq \theta \leq 1$，都有$\theta x_{1}+(1-\theta)x_{2}\in C$，则称这样的集合$C$为凸集
+    给定集合$C$，对$\forall x_{1}, x_{2}\in C$，如果对$0 \leq \theta \leq 1$，都有$\theta x_{1}+(1-\theta)x_{2}\in C$，则称这样的集合$C$为凸集。
 \end{definition}
+
+如下图所示是在平面上的两个集合，其中阴影部分表示构成集合的元素，实线表示含边界点。可以看出，(a)图是凸集，而(b)图不是凸集，原因是在(b)图表示的集合中，存在两点连接构成的线段不在集合内，在图中由红色线段表示。
+
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=100mm]{./Figures/convex_set_figure.png}
+    \caption{凸集与非凸集}
+    \label{figure_xlnx}
+\end{figure}
 
 例如，超平面$\{\bm{x}|\bm{a^{T}}\bm{x}=\bm{b}\}$是典型的凸集，其中$\bm{a}$为任意的非零向量。
 
@@ -51,7 +60,15 @@
     因此，$\theta \bm{x_{1}}+(1-\theta)\bm{x_{2}} \in H$，即超平面$H$是凸集。
 \end{proof}
 
-有了凸集的概念，下面给出凸函数的定义。
+上述的超平面如下图所示，其中向量$\bm{a}$是该超平面的法向量。
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=100mm]{./Figures/hyperplane_figure.png}
+    \caption{超平面$\{\bm{x}|\bm{a^{T}}\bm{x}=\bm{b}\}$}
+    \label{figure_xlnx}
+\end{figure}
+
+有了凸集的概念，下面给出凸函数\cite{2004Convex}的定义。
 
 \begin{definition}
     设函数$f(\cdot)$是适当函数，如果$\mathop{\mathrm{dom}} (f)$是凸集，且对$\forall x, y\in \mathop{\mathrm{dom}} (f), 0\leq \theta \leq 1$，都有
@@ -61,7 +78,7 @@
     则称这样的$f(\cdot)$为凸函数；如果同时还满足$\forall x, y\in \mathop{\mathrm{dom}} (f), x \neq y, 0<\theta<1$，则称这样的$f(\cdot)$为严格凸函数。
 \end{definition}
 
-直观来看，连接凸函数图像上的任意两点，其构成的线段都在图像上方。如果连接凸向上的任意两点，其构成的线段都在图像下方，则这样的函数称为凹函数。
+直观来看，连接凸函数图像上的任意两点，其构成的线段都在图像上方。如果连接图像上的任意两点，其构成的线段都在图像下方，则这样的函数称为凹函数。
 
 例如，负熵函数$f(x)=x\ln x, x>0$是凸函数，其函数图像如\ref{figure_xlnx}所示。
 
@@ -72,7 +89,7 @@
 %     \label{figure_xlnx}
 % \end{figure}
 
-更进一步，可以定义强凸函数的概念。
+更进一步，可以定义强凸函数\cite{2004Convex}的概念。
 
 \begin{definition}\label{def_convex_1}
     若存在常数$m>0$，使得
@@ -87,7 +104,7 @@
 \begin{definition}\label{def_convex_2}
     若存在常数$m>0$，使得对$\forall x, y \in \mathop{\mathrm{dom}} (f), 0<\theta<1$，有
     \begin{equation}
-        f(\theta x+(1-\theta y)) \leq \theta f(x) + (1-\theta)f(y) - \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2}
+        f(\theta x+(1-\theta y)) \leq \theta f(x) + (1-\theta)f(y) - \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2}.
     \end{equation}
     则称这样的$f(\cdot)$为强凸函数或$m$-强凸函数，$m$称为强凸参数。
 \end{definition}
@@ -101,7 +118,7 @@
             g(\theta x + (1-\theta)y) &\leq \theta g(x) + (1-\theta) g(y) \\
             f(\theta x + (1-\theta)y) - \frac{m}{2}\|\theta x+(1-\theta)y\|_{2}^{2} &\leq \theta(f(x)-\frac{m}{2}\|x\|_{2}^{2}) + (1-\theta) (f(y)-\frac{m}{2}\|y\|_{2}^{2}) \\
             f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta) f(y) + \frac{m}{2}\theta \|x\|_{2}^{2} - frac{m}{2}(1-\theta)\|y\|_{2}^{2} + \frac{m}{2}\|\theta x + (1-\theta)y\|_{2}^{2} \\
-            f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta) f(y) + \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2}
+            f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta) f(y) + \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2}.
         \end{split}
     \end{equation*}
 
@@ -123,7 +140,7 @@
         \begin{split}
             f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta)f(y) - \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2} \\
             &= f(x) - \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2} \\
-            &< f(x)
+            &< f(x).
         \end{split}
     \end{equation*}
     与假设$f(x)$为最小值矛盾，因此假设不成立，即如果$f(\cdot)$是强凸函数，且$f(\cdot)$存在最小值，则最小值点唯一。
@@ -131,7 +148,7 @@
 
 最后分析凸函数的一些基本性质。
 \begin{theorem}
-    若$f_{1}, f_{2}$是凸函数，则$f_{1}+f_{2}$也是凸函数
+    若$f_{1}, f_{2}$是凸函数，则$f_{1}+f_{2}$也是凸函数。
 \end{theorem}
 \begin{proof}
     由$f_{1}, f_{2}$是凸函数可知，对$\forall x, y\in \mathop{\mathrm{dom}} (f), 0\leq \theta \leq 1$有
@@ -139,14 +156,14 @@
     \begin{equation*}
         \begin{split}
             f_{1}(\theta x+(1-\theta)y)+f_{2}(\theta x+(1-\theta)y) &\leq \theta f_{1}(x)+(1-\theta)f_{1}(y) + \theta f_{2}(x)+(1-\theta)f_{2}(y) \\
-            &=\theta(f_{1}(x)+f_{2}(x)) + (1-\theta)(f_{1}(y)+f_{2}(y))
+            &=\theta(f_{1}(x)+f_{2}(x)) + (1-\theta)(f_{1}(y)+f_{2}(y)).
         \end{split}
     \end{equation*}
     由凸函数的定义，$f_{1}+f_{2}$是凸函数。
 \end{proof}
 
 \begin{theorem}
-    若$f_{1}, f_{2}, \cdots, f_{m}$是凸函数，则$f(x)=\mathop{\mathrm{max}}\{ f_{1}, f_{2}, \cdots, f_{m}\}$也是凸函数
+    若$f_{1}, f_{2}, \cdots, f_{m}$是凸函数，则$f(x)=\mathop{\mathrm{max}}\{ f_{1}, f_{2}, \cdots, f_{m}\}$也是凸函数。
 \end{theorem}
 \begin{proof}
     对$\forall x, y\in \mathop{\mathrm{dom}} (f), 0\leq \theta \leq 1$，有
@@ -154,14 +171,14 @@
     \begin{equation*}
         \begin{split}
             f(\theta x + (1-\theta) y) &=\mathop{\mathrm{max}} \{f_{1}(\theta x + (1-\theta) y), f_{2}(\theta x + (1-\theta) y), \cdots, f_{m}(\theta x + (1-\theta) y)\} \\
-            &\leq \mathop{\mathrm{max}} \{\theta f_{1}(x) + (1-\theta)f_{1}(y), \theta f_{2}(x) + (1-\theta)f_{2}(y), \cdots, \theta f_{m}(x) + (1-\theta)f_{m}(y)\} \\
+            &\leq \mathop{\mathrm{max}} \{\theta f_{1}(x) + (1-\theta)f_{1}(y), \theta f_{2}(x) + (1-\theta)f_{2}(y), \cdots, \theta f_{m}(x) + (1-\theta)f_{m}(y)\}. \\
         \end{split}
     \end{equation*}
 
     注意到$f(x) = \mathop{\mathrm{max}} \{f_{1}, f_{2}, \cdots, f_{m}\}$，因此$f(x)\leq f_{i}(x), i=1,2,\cdots,m$，于是可以得到，
 
     \begin{equation*}
-        f(\theta x + (1-\theta) y) \leq \theta f(x) + (1-\theta)f(y)
+        f(\theta x + (1-\theta) y) \leq \theta f(x) + (1-\theta)f(y).
     \end{equation*}
     由凸函数的定义，$f(x)=\mathop{\mathrm{max}}\{ f_{1}, f_{2}, \cdots, f_{m}\}$是凸函数。
 \end{proof}
@@ -479,7 +496,7 @@
     \end{equation}
 从而说明$\|\bm{A}\|_{p, q}$是最小的光滑参数。
 \end{solution}
-\par 下面介绍关于$L$-光滑函数的非常有用的结论，即下降引理（Descent Lemma），该引理所表达的是该函数有一个特定的二次函数上界。
+\par 下面介绍关于$L$-光滑函数的非常有用的结论，即下降引理（Descent Lemma）\cite{2006NumericalOptmizationBook}，该引理所表达的是该函数有一个特定的二次函数上界。
 
 \begin{theorem}[下降引理]
     如果函数$f: \mathbb{R}^{n}\rightarrow \mathbb{R}$是一个定义在给定凸集$D$上的$L$-光滑函数，那么对于$\forall \bm{x}, \bm{y}\in D$，有
@@ -819,8 +836,7 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 \end{array}
     \label{eqt1_12}
 \end{equation}
-如果最优化问题\ref{eqt1_12}的最优目标函数$  p^{*}  $为$ 0 $， 则该问题的所有约束是可行的，并且所有的可行解$  \bm{x} \in X_{f e a}  $对于问题\ref{eqt1_12}都是最优的；但是如果$  p^{*}  $为$
- \infty $，则该问题的约束是不可行的。
+如果最优化问题\ref{eqt1_12}的最优目标函数$  p^{*}  $为$ 0 $， 则该问题的所有约束是可行的，并且所有的可行解$  \bm{x} \in X_{f e a}  $对于问题\ref{eqt1_12}都是最优的；但是如果$  p^{*}  $为$\infty $，则该问题的约束是不可行的。
 \par 考虑下面特别的最优化问题：
 \begin{equation}
 \begin{array}{ll}
@@ -879,20 +895,22 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 \begin{equation}
     \begin{split}
         &\mathop{\mathrm{min}}\limits_{x\in \mathbb{R}^{n}} f(x), \\
-        &\mathrm{s. t.} \quad\quad x\in \mathcal{X}
+        &\mathrm{s. t.} \quad\quad x\in X
     \end{split}
 \end{equation}
 
+下面给出Weierstrass定理\cite{2006OptimizationBook}及其证明。
+
 \begin{theorem}[Weierstrass定理]
-    考虑适当闭函数$f: \mathcal{X} \rightarrow (-\infty, +\infty]$，假设下面3个条件中的任意一个成立：
+    考虑适当闭函数$f: X \rightarrow (-\infty, +\infty]$，假设下面3个条件中的任意一个成立：
 
-    (1) $\mathop{\mathrm{dom}} (f):=\{x\in \mathcal{X}: f(x) < +\infty\}$
+    (1) $\mathop{\mathrm{dom}} (f):=\{x\in X: f(x) < +\infty\}$;
 
-    (2) 存在常数$\gamma$使集合$C_{\gamma}:=\{x\in \mathcal{X}: f(x) \leq \gamma\}$是非空有界的
+    (2) 存在常数$\gamma$使集合$C_{\gamma}:=\{x\in X: f(x) \leq \gamma\}$是非空有界的；
 
-    (3) $f(\cdot)$满足对任意的点列$\{x^{k}\}\subset \mathcal{X}, \|x^{k}\|\rightarrow +\infty$，都有$\lim\limits_{k\rightarrow \infty} f(x^{k})=+\infty$
+    (3) $f(\cdot)$满足对任意的点列$\{x^{k}\}\subset X, \|x^{k}\|\rightarrow +\infty$，都有$\lim\limits_{k\rightarrow \infty} f(x^{k})=+\infty$;
 
-    则对于上述的优化问题存在非空的最小点集$\{x\in \mathcal{X} | f(x) \leq f(y), \forall y\in \mathcal{X}\}$
+    则对于上述的优化问题存在非空的最小点集$\{x\in X | f(x) \leq f(y), \forall y\in X\}$.
 \end{theorem}
 
 \begin{proof}
@@ -906,13 +924,13 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 
     假设条件(1)成立，则$\mathop{\mathrm{dom}} (f)$有界，
 
-    由于$f(\cdot)$是适当函数，因此存在$x_{0}\in \mathcal{X}$使得$f(x_{0})<+\infty$，
+    由于$f(\cdot)$是适当函数，因此存在$x_{0}\in X$使得$f(x_{0})<+\infty$,
 
-    令$\gamma = f(x_{0})$，那么集合$C_{\gamma}$为非空有界的
+    令$\gamma = f(x_{0})$，那么集合$C_{\gamma}$为非空有界的。
 
-    假设条件(3)成立，则存在$x_{0}\in \mathcal{X}$使得$f(x_{0})<+\infty$与$\gamma = f(x_{0})$，
+    假设条件(3)成立，则存在$x_{0}\in X$使得$f(x_{0})<+\infty$与$\gamma = f(x_{0})$,
 
-    假设$C_{\gamma}$无界，那么存在点列$\{x^{k}\}\subset C_{\gamma}$满足$\lim\limits_{k\rightarrow \infty} \|x^{k}\| = +\infty$，
+    假设$C_{\gamma}$无界，那么存在点列$\{x^{k}\}\subset C_{\gamma}$满足$\lim\limits_{k\rightarrow \infty} \|x^{k}\| = +\infty$,
 
     于是由条件(3)可知，$\lim\limits_{k\rightarrow \infty}f(x^{k})=+\infty$，与$f(x)\leq \gamma$矛盾，于是假设不成立，即得到条件(2).
 \end{proof}

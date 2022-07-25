@@ -2491,3 +2491,93 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">./Reference/ref_issue01.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">2004Convex</bcf:citekey>
+    <bcf:citekey order="2">2004Convex</bcf:citekey>
+    <bcf:citekey order="3">2004Convex</bcf:citekey>
+    <bcf:citekey order="4">2004Convex</bcf:citekey>
+    <bcf:citekey order="5">2007柯西</bcf:citekey>
+    <bcf:citekey order="6">2006NumericalOptmizationBook</bcf:citekey>
+    <bcf:citekey order="7">1980Curvilinear</bcf:citekey>
+    <bcf:citekey order="8">2004Convex</bcf:citekey>
+    <bcf:citekey order="9">1963Linear</bcf:citekey>
+    <bcf:citekey order="10">1995Sequential</bcf:citekey>
+    <bcf:citekey order="11">1982Quadratically</bcf:citekey>
+    <bcf:citekey order="12">1989Least</bcf:citekey>
+    <bcf:citekey order="13">2006OptimizationBook</bcf:citekey>
+    <bcf:citekey order="14">6302929</bcf:citekey>
+    <bcf:citekey order="15">1989Least</bcf:citekey>
+    <bcf:citekey order="16">6302929</bcf:citekey>
+    <bcf:citekey order="17">2009Accelerated</bcf:citekey>
+    <bcf:citekey order="18">1999Convergence</bcf:citekey>
+    <bcf:citekey order="19">1999Convergence</bcf:citekey>
+    <bcf:citekey order="20">2002ConvergenceAnalysis</bcf:citekey>
+    <bcf:citekey order="21">2009Accelerated</bcf:citekey>
+    <bcf:citekey order="22">6302929</bcf:citekey>
+    <bcf:citekey order="23">SGD</bcf:citekey>
+    <bcf:citekey order="24">SGD</bcf:citekey>
+    <bcf:citekey order="25">2021Statistical</bcf:citekey>
+    <bcf:citekey order="26">SGD</bcf:citekey>
+    <bcf:citekey order="27">SAG</bcf:citekey>
+    <bcf:citekey order="28">SAG</bcf:citekey>
+    <bcf:citekey order="29">SVRG</bcf:citekey>
+    <bcf:citekey order="30">SVRG</bcf:citekey>
+    <bcf:citekey order="31">SGD</bcf:citekey>
+    <bcf:citekey order="32">SGD</bcf:citekey>
+    <bcf:citekey order="33">SGD</bcf:citekey>
+    <bcf:citekey order="34">SGD</bcf:citekey>
+    <bcf:citekey order="35">SAG</bcf:citekey>
+    <bcf:citekey order="36">SAG</bcf:citekey>
+    <bcf:citekey order="37">SAG</bcf:citekey>
+    <bcf:citekey order="38">SAG</bcf:citekey>
+    <bcf:citekey order="39">SVRG</bcf:citekey>
+    <bcf:citekey order="40">SVRG</bcf:citekey>
+    <bcf:citekey order="41">SVRG</bcf:citekey>
+    <bcf:citekey order="42">SVRG</bcf:citekey>
+    <bcf:citekey order="43">SAGA</bcf:citekey>
+    <bcf:citekey order="44">SAGA</bcf:citekey>
+    <bcf:citekey order="45">SAGA</bcf:citekey>
+    <bcf:citekey order="46">SAGA</bcf:citekey>
+    <bcf:citekey order="47">SGD</bcf:citekey>
+    <bcf:citekey order="48">SAG</bcf:citekey>
+    <bcf:citekey order="49">SVRG</bcf:citekey>
+    <bcf:citekey order="50">SAGA</bcf:citekey>
+    <bcf:citekey order="51">SAG</bcf:citekey>
+    <bcf:citekey order="52">SGD</bcf:citekey>
+    <bcf:citekey order="53">SAG</bcf:citekey>
+    <bcf:citekey order="54">SAG</bcf:citekey>
+    <bcf:citekey order="55">SGD</bcf:citekey>
+    <bcf:citekey order="56">SVRG</bcf:citekey>
+    <bcf:citekey order="57">SAG</bcf:citekey>
+    <bcf:citekey order="58">SAGA</bcf:citekey>
+    <bcf:citekey order="59">SAG</bcf:citekey>
+    <bcf:citekey order="60">SAGA</bcf:citekey>
+    <bcf:citekey order="61">SAGA</bcf:citekey>
+    <bcf:citekey order="62">SAG</bcf:citekey>
+    <bcf:citekey order="63">2014Prox</bcf:citekey>
+    <bcf:citekey order="64">1980Curvilinear</bcf:citekey>
+    <bcf:citekey order="65">1963A</bcf:citekey>
+    <bcf:citekey order="66">1989On</bcf:citekey>
+    <bcf:citekey order="67">1992Global</bcf:citekey>
+    <bcf:citekey order="68">1992Global</bcf:citekey>
+    <bcf:citekey order="69">1976AugLagrange</bcf:citekey>
+    <bcf:citekey order="70">1975ADMMBook</bcf:citekey>
+    <bcf:citekey order="71">2016ADMM</bcf:citekey>
+    <bcf:citekey order="72">2017ADMM</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>

@@ -4,7 +4,11 @@
 
 \subsection{凸优化模型}
 
-考虑凸优化问题$\min\limits_{x\in \mathbb{R}^{n}} f(x) := g(x) + h(x)$，其中函数$g(x)$是可微的且Lipschitz连续，而$h(x)$则可能是连续但不处处可微的函数。
+考虑凸优化问题
+\begin{equation}\label{eq_prox_1}
+    \min\limits_{x\in \mathbb{R}^{n}} f(x) := g(x) + h(x),
+\end{equation}
+其中函数$g(x)$是可微的且Lipschitz连续，而$h(x)$则可能是连续但不处处可微的函数。
 例如，在对优化的函数引入正则项时，就属于上述的凸优化模型，其中$h(x)=\|x\|_{1}$即$l_{1}$范数。对于这样的模型，可以采用临近梯度下降法求解最优解。
 
 在应用临近梯度下降法进行优化时，通常对Lipschitz连续的部分即$g(x)$求梯度，但对于不处处可微的$h(x)$部分在无法求解梯度时，采用求临近梯度的方式代替。
@@ -17,7 +21,7 @@
     对于一个凸函数$h(x)$，定义它的临近算子为
 
     \begin{equation}
-        \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h}\{h(u)+\frac{1}{2}\|u-x\|^{2}\}.
+        \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)}\{h(u)+\frac{1}{2}\|u-x\|^{2}\}.
     \end{equation}
 
 \end{definition}
@@ -25,14 +29,14 @@
 如果想进一步基于临近算子的概念定义临近梯度，并用于优化问题的求解，必须证明上述定义的临近算子唯一存在，这样对于一个给定的凸优化问题，其最优解才是唯一的。
 
 \begin{theorem}\label{thm_prox_1}
-    如果$h(x)$是一个定义在$\mathbb{R}^{n}$上的适当的闭凸函数，则对任意的$x\in \mathbb{R}^{n}$，$\mathop{\mathrm{prox_{h}}}(x)$的值唯一存在
+    如果$h(x)$是一个定义在$\mathbb{R}^{n}$上的适当的闭凸函数，则对任意的$x\in \mathbb{R}^{n}$，$\mathop{\mathrm{prox_{h}}}(x)$的值唯一存在。
 \end{theorem}
 
 \begin{proof}
     假设$h(x)$至少在定义域内存在一点存在次梯度$\bm{g}$，由次梯度的定义可以得到
 
     \begin{equation}
-        h(u)\geq h(v)+\langle \bm{g}, u-v\rangle, v\in \mathop{\mathrm{dom}h}.
+        h(u)\geq h(v)+\langle \bm{g}, u-v\rangle, v\in \mathop{\mathrm{dom} (h)}.
     \end{equation}
 
     定义辅助函数
@@ -69,8 +73,8 @@
     \begin{equation}
         \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{argmin}}\limits_{u\in \mathbb{R}^{n}}
         \begin{cases}
-            tu + \frac{1}{2}(u-x)^{2}, u>0      \\
-            -tu + \frac{1}{2}(u-x)^{2}, u\leq 0 \\
+            tu + \frac{1}{2}(u-x)^{2}, u>0      ,\\
+            -tu + \frac{1}{2}(u-x)^{2}, u\leq 0 .\\
         \end{cases}
     \end{equation}
 
@@ -84,7 +88,7 @@
         \mathop{\mathrm{prox_{h}}}(x) = \mathop{\mathrm{sgn}}(x)\max\{|x|-t, 0\}.
     \end{equation}
     
-    其中，\mathop{\mathrm{sgn}}(x)的定义与函数图像如下。
+    其中，$\mathop{\mathrm{sgn}}(x)$的定义与函数图像如下。
     \begin{definition}
         对于$\mathop{\mathrm{sgn}}(x)$，定义
         \begin{equation}
@@ -128,8 +132,8 @@
 
 \begin{equation}
     \begin{cases}
-        y^{k+1} = x^{k} - \alpha_{k}\nabla g(x^{k}) \\
-        x^{k+1} = \mathop{\mathrm{prox_{\alpha_{k} h}}}(y^{k+1})
+        y^{k+1} = x^{k} - \alpha_{k}\nabla g(x^{k}) ;\\
+        x^{k+1} = \mathop{\mathrm{prox_{\alpha_{k} h}}}(y^{k+1}).
     \end{cases}
 \end{equation}
 
@@ -163,14 +167,12 @@
 \subsection{算法分析}
 
 首先，对于问题\ref{eq_prox_1}，临近梯度下降法实际是对非光滑部分$g(x)$在$x^{k}$处的Taylor展开再加上二次项，同时保留非光滑部分$h(x)$，对该展开式求极小来作为每次迭代的近似。
-
 \begin{equation}
     \begin{split}
-        x^{k+1} &=  \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h}\{\alpha_{k}h(u) + \frac{1}{2}\|u-(x^{k}-\alpha_{k}\nabla g(x^{k}))\|^{2}\} \\
-                &= \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} h} \{h(u)+g(x^{k})+\langle \nabla g(x^{k}), u-x^{k} \rangle + \frac{1}{2\alpha_{k}}\|u-x^{k}\|^{2}\}.
+        x^{k+1} &=  \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)}\{\alpha_{k}h(u) + \frac{1}{2}\|u-(x^{k}-\alpha_{k}\nabla g(x^{k}))\|^{2}\} \\
+                &= \mathop{\mathrm{argmin}}\limits_{u\in \mathop{\mathrm{dom}} (h)} \{h(u)+g(x^{k})+\langle \nabla g(x^{k}), u-x^{k} \rangle + \frac{1}{2\alpha_{k}}\|u-x^{k}\|^{2}\}.
     \end{split}
 \end{equation}
-
 其次，临近梯度下降法对光滑的部分做显式的梯度下降，对非光滑部分根据其性质与结构使用临近算子做隐式的梯度下降进行求解。这相比一般的梯度下降法能够求解更多的问题，也是临近梯度下降法的优势。
 
 最后，考虑算法\ref{alg_prox_1}的收敛性分析。
@@ -198,12 +200,12 @@
         g(x-\alpha\tilde{\nabla} g(x)) \leq g(x) - \alpha \langle \nabla g(x), y-x \rangle \tilde{\nabla} g(x) + \frac{\alpha}{2}\|\tilde{\nabla} g(x)\|^{2}.
     \end{equation*}
 
-    由$g(x), h(x)$为凸函数，对$\forall z \in \mathop{\mathrm{dom}} f$，有
+    由$g(x), h(x)$为凸函数，对$\forall z \in \mathop{\mathrm{dom}} (f)$，有
     \begin{equation*}
         g(x) \leq g(z) - \langle \nabla g(x), z-x  \rangle.
     \end{equation*}
 
-    整理可得，对$\forall z \in \mathop{\mathrm{dom}} f$，有
+    整理可得，对$\forall z \in \mathop{\mathrm{dom}} (f)$，有
     \begin{equation*}
         f(x-\alpha\tilde{\nabla} g(x)) \leq f(z) + \langle \tilde{\nabla}g(x), z-x \rangle - \frac{\alpha}{2}\|\tilde{\nabla} g(x)\|^{2}.
     \end{equation*}
@@ -268,7 +270,6 @@
     其中，$\alpha_{k}$表示第$k$次迭代的步长。
 
     由迭代公式\ref{eq_prox_2}，可以得到
-
     \begin{equation}
         \begin{split}
             \bm{x}^{k+1} &= \mathop{\mathrm{prox_{\alpha_{k}h}}}(\bm{x}^{k} - \alpha_{k}\nabla g(\bm{x}^{k})) \\
