@@ -4,4 +4,8 @@
 
 ### Usage
 
-编译main.tex生成main.pdf
+```shell
+cd advanced-linear-algebra-paper
+biber main.bcf
+xelatex main.tex
+```
