@@ -1,0 +1,904 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{2004Convex}{book}{}
+      \name{author}{2}{}{%
+        {{hash=fdb760b740da8a080df12615e128118d}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=4cd2161e2c45c5dbcd6247642d0d2361}{%
+           family={Vandenberghe},
+           familyi={V\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Convex Optimization}%
+      }
+      \strng{namehash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \strng{fullhash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \strng{bibnamehash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \strng{authorbibnamehash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \strng{authornamehash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \strng{authorfullhash}{02ee23bd5f57a80d54b50b65e3500a84}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Convex Optimization}
+      \field{usera}{M}
+      \field{userd}{C}
+      \field{usere}{Boyd, S. and Vandenberghe, L.}
+      \field{userf}{Boyd, S. and Vandenberghe, L.}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \keyw{2004Convex}
+    \endentry
+    \entry{2007柯西}{article}{}
+      \name{author}{2}{}{%
+        {{hash=305be7965375e114a6965c245e1ffc9e}{%
+           family={张伟},
+           familyi={张\bibinitperiod}}}%
+        {{hash=5d11f069e9d6925912ad1a68ddb1bc78}{%
+           family={何卫},
+           familyi={何\bibinitperiod}}}%
+      }
+      \strng{namehash}{f157775ef704ab802dc72077eb3cd01d}
+      \strng{fullhash}{f157775ef704ab802dc72077eb3cd01d}
+      \strng{bibnamehash}{f157775ef704ab802dc72077eb3cd01d}
+      \strng{authorbibnamehash}{f157775ef704ab802dc72077eb3cd01d}
+      \strng{authornamehash}{f157775ef704ab802dc72077eb3cd01d}
+      \strng{authorfullhash}{f157775ef704ab802dc72077eb3cd01d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{重庆教育学院学报}
+      \field{number}{3}
+      \field{title}{柯西-施瓦茨不等式的三种证明}
+      \field{usera}{J}
+      \field{userd}{柯}
+      \field{usere}{张伟 and 何卫}
+      \field{userf}{张伟 and 何卫}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \keyw{2007柯西}
+    \endentry
+    \entry{2006NumericalOptmizationBook}{book}{}
+      \name{author}{1}{}{%
+        {{hash=15a434cdaf7c4c4122448895e653dd09}{%
+           family={Nocedal\bibnamedelima J},
+           familyi={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={Wright\bibnamedelima S},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer Science \& Business Media}%
+      }
+      \strng{namehash}{15a434cdaf7c4c4122448895e653dd09}
+      \strng{fullhash}{15a434cdaf7c4c4122448895e653dd09}
+      \strng{bibnamehash}{15a434cdaf7c4c4122448895e653dd09}
+      \strng{authorbibnamehash}{15a434cdaf7c4c4122448895e653dd09}
+      \strng{authornamehash}{15a434cdaf7c4c4122448895e653dd09}
+      \strng{authorfullhash}{15a434cdaf7c4c4122448895e653dd09}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{Numerical Optimization}
+      \field{usera}{M}
+      \field{userd}{N}
+      \field{usere}{Nocedal J, Wright S}
+      \field{userf}{Nocedal J, Wright S}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \keyw{2006NumericalOptmizationBook}
+    \endentry
+    \entry{1980Curvilinear}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3cd25081e68d87e5330591956135cb89}{%
+           family={Goldfarb},
+           familyi={G\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{3cd25081e68d87e5330591956135cb89}
+      \strng{fullhash}{3cd25081e68d87e5330591956135cb89}
+      \strng{bibnamehash}{3cd25081e68d87e5330591956135cb89}
+      \strng{authorbibnamehash}{3cd25081e68d87e5330591956135cb89}
+      \strng{authornamehash}{3cd25081e68d87e5330591956135cb89}
+      \strng{authorfullhash}{3cd25081e68d87e5330591956135cb89}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{number}{1}
+      \field{title}{Curvilinear path steplength algorithms for minimization which use directions of negative curvature}
+      \field{usera}{J}
+      \field{userd}{C}
+      \field{usere}{Goldfarb, D.}
+      \field{userf}{Goldfarb, D.}
+      \field{volume}{18}
+      \field{year}{1980}
+      \field{dateera}{ce}
+      \field{pages}{31\bibrangedash 40}
+      \range{pages}{10}
+      \keyw{1980Curvilinear}
+    \endentry
+    \entry{1963Linear}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c0a12afc705f8104bfb6e235ae44ffa2}{%
+           family={Dantzig},
+           familyi={D\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Linear Programming}%
+        {Extensions}%
+      }
+      \strng{namehash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \strng{fullhash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \strng{bibnamehash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \strng{authorbibnamehash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \strng{authornamehash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \strng{authorfullhash}{c0a12afc705f8104bfb6e235ae44ffa2}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Linear Programming and Extensions}
+      \field{usera}{M}
+      \field{userd}{L}
+      \field{usere}{Dantzig, G.}
+      \field{userf}{Dantzig, G.}
+      \field{year}{1963}
+      \field{dateera}{ce}
+      \keyw{1963Linear}
+    \endentry
+    \entry{1995Sequential}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3fd71b507159de8265688af1f476a9af}{%
+           family={Boggs},
+           familyi={B\bibinitperiod},
+           given={Paul\bibnamedelima T.},
+           giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=315f631739b4d222d4d8f77a05255c2f}{%
+           family={Tolle},
+           familyi={T\bibinitperiod},
+           given={Jon\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \strng{fullhash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \strng{bibnamehash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \strng{authorbibnamehash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \strng{authornamehash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \strng{authorfullhash}{98503fa342b1ac93f1c6331cbc2aa941}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Numerica}
+      \field{title}{Sequential Quadratic Programming}
+      \field{usera}{J}
+      \field{userd}{S}
+      \field{usere}{Boggs, Paul T. and Tolle, Jon W.}
+      \field{userf}{Boggs, Paul T. and Tolle, Jon W.}
+      \field{volume}{4}
+      \field{year}{1995}
+      \field{dateera}{ce}
+      \keyw{1995Sequential}
+    \endentry
+    \entry{1982Quadratically}{article}{}
+      \name{author}{1}{}{%
+        {{hash=33a22a0c4c08aea15ba4c85e03d73c64}{%
+           family={Phan-Huy-Hao},
+           familyi={P\bibinithyphendelim H\bibinithyphendelim H\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \strng{fullhash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \strng{bibnamehash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \strng{authorbibnamehash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \strng{authornamehash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \strng{authorfullhash}{33a22a0c4c08aea15ba4c85e03d73c64}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Methods of Operational Research}
+      \field{number}{1}
+      \field{title}{Quadratically constrained quadratic programming: Some applications and a method for solution}
+      \field{usera}{J}
+      \field{userd}{Q}
+      \field{usere}{Phan-Huy-Hao, E.}
+      \field{userf}{Phan-Huy-Hao, E.}
+      \field{volume}{26}
+      \field{year}{1982}
+      \field{dateera}{ce}
+      \field{pages}{105\bibrangedash 119}
+      \range{pages}{15}
+      \keyw{1982Quadratically}
+    \endentry
+    \entry{1989Least}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e300c437b924b9d71eae97c41b160dd5}{%
+           family={Brockett},
+           familyi={B\bibinitperiod},
+           given={R.\bibnamedelimi W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e300c437b924b9d71eae97c41b160dd5}
+      \strng{fullhash}{e300c437b924b9d71eae97c41b160dd5}
+      \strng{bibnamehash}{e300c437b924b9d71eae97c41b160dd5}
+      \strng{authorbibnamehash}{e300c437b924b9d71eae97c41b160dd5}
+      \strng{authornamehash}{e300c437b924b9d71eae97c41b160dd5}
+      \strng{authorfullhash}{e300c437b924b9d71eae97c41b160dd5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Least square matching problem}
+      \field{usera}{J}
+      \field{userd}{L}
+      \field{usere}{Brockett, R. W.}
+      \field{userf}{Brockett, R. W.}
+      \field{year}{1989}
+      \field{dateera}{ce}
+      \keyw{1989Least}
+    \endentry
+    \entry{2006OptimizationBook}{book}{}
+      \name{author}{1}{}{%
+        {{hash=29b57cdc42c10bf45125a0fe3b85bb18}{%
+           family={Sun\bibnamedelima W},
+           familyi={S\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Yuan\bibnamedelimb Y\bibnamedelima X},
+           giveni={Y\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer Science \& Business Media}%
+      }
+      \strng{namehash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \strng{fullhash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \strng{bibnamehash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \strng{authorbibnamehash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \strng{authornamehash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \strng{authorfullhash}{29b57cdc42c10bf45125a0fe3b85bb18}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Optimization theory and methods: nonlinear programming}
+      \field{usera}{M}
+      \field{userd}{O}
+      \field{usere}{Sun W, Yuan Y X}
+      \field{userf}{Sun W, Yuan Y X}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \keyw{2006OptimizationBook}
+    \endentry
+    \entry{6302929}{inbook}{}
+      \name{author}{2}{}{%
+        {{hash=55cd5380bb5b15032a6d5a2015f56e3f}{%
+           family={Rumelhart},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=fa623109668f355db4430ccca298f768}{%
+           family={McClelland},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{ee420684969159dccff9d327374e6dee}
+      \strng{fullhash}{ee420684969159dccff9d327374e6dee}
+      \strng{bibnamehash}{ee420684969159dccff9d327374e6dee}
+      \strng{authorbibnamehash}{ee420684969159dccff9d327374e6dee}
+      \strng{authornamehash}{ee420684969159dccff9d327374e6dee}
+      \strng{authorfullhash}{ee420684969159dccff9d327374e6dee}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Parallel Distributed Processing: Explorations in the Microstructure of Cognition: Foundations}
+      \field{title}{Learning Internal Representations by Error Propagation}
+      \field{usera}{M}
+      \field{userd}{L}
+      \field{usere}{Rumelhart, David E. and McClelland, James L.}
+      \field{userf}{Rumelhart, David E. and McClelland, James L.}
+      \field{year}{1987}
+      \field{dateera}{ce}
+      \field{pages}{318\bibrangedash 362}
+      \range{pages}{45}
+      \keyw{6302929}
+    \endentry
+    \entry{2009Accelerated}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=2550c5cc27d3114ae41974642fd71489}{%
+           family={Xi},
+           familyi={X\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=34fce5fd4601b514399d6bcb1fb88d44}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=08c088f18d523e0e3198233357a510e0}{%
+           family={Kwok},
+           familyi={K\bibinitperiod},
+           given={J.\bibnamedelimi T.},
+           giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=605887004e99e3d5bc9e29b6da291bd4}{%
+           family={Carbonell},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{49b24dd7722405b0ca19b52e86fe67f0}
+      \strng{fullhash}{a4d33ac7e31d1c98519e5c6117db7c87}
+      \strng{bibnamehash}{49b24dd7722405b0ca19b52e86fe67f0}
+      \strng{authorbibnamehash}{49b24dd7722405b0ca19b52e86fe67f0}
+      \strng{authornamehash}{49b24dd7722405b0ca19b52e86fe67f0}
+      \strng{authorfullhash}{a4d33ac7e31d1c98519e5c6117db7c87}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE International Conference on Data Mining}
+      \field{title}{Accelerated Gradient Method for Multi-task Sparse Learning Problem}
+      \field{usera}{C}
+      \field{userd}{A}
+      \field{usere}{Xi, C. and Pan, W. and Kwok, J. T. and Carbonell, J. G.}
+      \field{userf}{Xi, C. and Pan, W. and Kwok, J. T. and Carbonell, J. G.}
+      \field{year}{2009}
+      \field{dateera}{ce}
+      \keyw{2009Accelerated}
+    \endentry
+    \entry{1999Convergence}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7969f8181e9a32880df47ee65ee28689}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={N.\bibnamedelimi Y.},
+           giveni={N\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=4a0ab74efca9f2be96c187bda03012b2}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Z.\bibnamedelimi F.},
+           giveni={Z\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \strng{fullhash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \strng{bibnamehash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \strng{authorbibnamehash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \strng{authornamehash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \strng{authorfullhash}{6c4f43e506feb0fb3c3534370ee64fd7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Computational Mathematics}
+      \field{number}{6}
+      \field{title}{Convergence properties of a modified BFGS algorithm for minimization with Armijo-Goldstein steplengths}
+      \field{usera}{J}
+      \field{userd}{C}
+      \field{usere}{Deng, N. Y. and Li, Z. F.}
+      \field{userf}{Deng, N. Y. and Li, Z. F.}
+      \field{volume}{17}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{pages}{645\bibrangedash 652}
+      \range{pages}{8}
+      \keyw{1999Convergence}
+    \endentry
+    \entry{2002ConvergenceAnalysis}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=2b9e2c61f0d30e9bfef512ac356ffb8c}{%
+           family={郭崇慧},
+           familyi={郭\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {大连理工大学}%
+      }
+      \strng{namehash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \strng{fullhash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \strng{bibnamehash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \strng{authorbibnamehash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \strng{authornamehash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \strng{authorfullhash}{2b9e2c61f0d30e9bfef512ac356ffb8c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{若干最优化方法的收敛性分析及应用研究}
+      \field{usera}{D}
+      \field{userd}{若}
+      \field{usere}{郭崇慧}
+      \field{userf}{郭崇慧}
+      \field{year}{2002}
+      \field{dateera}{ce}
+      \keyw{2002ConvergenceAnalysis}
+    \endentry
+    \entry{SGD}{article}{}
+      \name{author}{2}{}{%
+        {{hash=163566b92b332258782e61e3d217a2bb}{%
+           family={Robbins},
+           familyi={R\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod}}}%
+        {{hash=95751f7f614bc2af42f1a078b3e2ba61}{%
+           family={Monro},
+           familyi={M\bibinitperiod},
+           given={Sutton},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{fullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{bibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorbibnamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authornamehash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \strng{authorfullhash}{5d85b58c5cbfcc8fc266cf4f5f6fbdbb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{A Stochastic Approximation Method}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Herbert Robbins and Sutton Monro}
+      \field{userf}{Herbert Robbins and Sutton Monro}
+      \field{volume}{22}
+      \field{year}{1951}
+      \field{dateera}{ce}
+      \field{pages}{400\bibrangedash 407}
+      \range{pages}{8}
+      \keyw{SGD}
+    \endentry
+    \entry{2021Statistical}{article}{}
+      \name{author}{3}{}{%
+        {{hash=984d7b09d09bdcd32d9fd65096c220c9}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=8005b0537de4d2a3de7a88f0322a7ff3}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=473599e638b1d5f77b0b87ef4e328e56}{%
+           family={Balasubramanian},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{72ec856c80b0b97f78fa49d374a87da7}
+      \strng{fullhash}{72ec856c80b0b97f78fa49d374a87da7}
+      \strng{bibnamehash}{72ec856c80b0b97f78fa49d374a87da7}
+      \strng{authorbibnamehash}{72ec856c80b0b97f78fa49d374a87da7}
+      \strng{authornamehash}{72ec856c80b0b97f78fa49d374a87da7}
+      \strng{authorfullhash}{72ec856c80b0b97f78fa49d374a87da7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Statistical Inference for Polyak-Ruppert Averaged Zeroth-order Stochastic Gradient Algorithm}
+      \field{usera}{J}
+      \field{userd}{S}
+      \field{usere}{Jin, Y. and Xiao, T. and Balasubramanian, K.}
+      \field{userf}{Jin, Y. and Xiao, T. and Balasubramanian, K.}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \keyw{2021Statistical}
+    \endentry
+    \entry{SAG}{article}{}
+      \name{author}{2}{}{%
+        {{hash=73c0ae62ebb59b946148908b26b040e5}{%
+           family={Mark\bibnamedelima Schmidt},
+           familyi={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Nicolas\bibnamedelimb Le\bibnamedelima Roux},
+           giveni={N\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=93da2819ab01d8a5e7bae39ce6f17c1f}{%
+           family={Bach},
+           familyi={B\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{05b51278077d3fbbec4ddd7e94c16147}
+      \strng{fullhash}{05b51278077d3fbbec4ddd7e94c16147}
+      \strng{bibnamehash}{05b51278077d3fbbec4ddd7e94c16147}
+      \strng{authorbibnamehash}{05b51278077d3fbbec4ddd7e94c16147}
+      \strng{authornamehash}{05b51278077d3fbbec4ddd7e94c16147}
+      \strng{authorfullhash}{05b51278077d3fbbec4ddd7e94c16147}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{number}{1}
+      \field{title}{Minimizing Finite Sums With the Stochastic Average Gradient}
+      \field{usera}{J}
+      \field{userd}{M}
+      \field{usere}{Mark Schmidt, Nicolas Le Roux, and Francis Bach}
+      \field{userf}{Mark Schmidt, Nicolas Le Roux, and Francis Bach}
+      \field{volume}{162}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{83\bibrangedash 112}
+      \range{pages}{30}
+      \keyw{SAG}
+    \endentry
+    \entry{SVRG}{article}{}
+      \name{author}{2}{}{%
+        {{hash=fd430eae501f155d9616945b37130fc5}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=6987c26bf5f9b6e119893b5d925c7b8c}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \strng{fullhash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \strng{bibnamehash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \strng{authorbibnamehash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \strng{authornamehash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \strng{authorfullhash}{9e7118b8a038a892904c4f1fdfa7b098}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{News in physiological sciences}
+      \field{number}{3}
+      \field{title}{Accelerating Stochastic Gradient Descent Using Predictive Variance Reduction}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Johnson, R. , and T. Zhang}
+      \field{userf}{Johnson, R. , and T. Zhang}
+      \field{volume}{1}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{pages}{315\bibrangedash 323}
+      \range{pages}{9}
+      \keyw{SVRG}
+    \endentry
+    \entry{SAGA}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2c901e4271e0aaac8d8b7e50097deffd}{%
+           family={Defazio},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d6514cf1f6351c53d49bdb629b4e75db}{%
+           family={Lacoste-Julien},
+           familyi={L\bibinithyphendelim J\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \strng{fullhash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \strng{bibnamehash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \strng{authorbibnamehash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \strng{authornamehash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \strng{authorfullhash}{8da3aee4ed4a5e94918e9524a2b1cdd5}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Conference on Neural Information Processing Systems. MIT Press}
+      \field{title}{SAGA: A Fast Incremental Gradient Method With Support for Non-Strongly Convex Composite Objectives}
+      \field{usera}{J}
+      \field{userd}{S}
+      \field{usere}{Defazio, A. , and S. Lacoste-Julien}
+      \field{userf}{Defazio, A. , and S. Lacoste-Julien}
+      \field{volume}{2}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \keyw{SAGA}
+    \endentry
+    \entry{2014Prox}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f8ad4c337da16452a0c3e908c17d5502}{%
+           family={Parikh\bibnamedelima N},
+           familyi={P\bibinitperiod\bibinitdelim N\bibinitperiod},
+           given={et\bibnamedelima al},
+           giveni={e\bibinitperiod\bibinitdelim a\bibinitperiod},
+           suffix={Boyd\bibnamedelima S},
+           suffixi={B\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f8ad4c337da16452a0c3e908c17d5502}
+      \strng{fullhash}{f8ad4c337da16452a0c3e908c17d5502}
+      \strng{bibnamehash}{f8ad4c337da16452a0c3e908c17d5502}
+      \strng{authorbibnamehash}{f8ad4c337da16452a0c3e908c17d5502}
+      \strng{authornamehash}{f8ad4c337da16452a0c3e908c17d5502}
+      \strng{authorfullhash}{f8ad4c337da16452a0c3e908c17d5502}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proximal algorithms}
+      \field{number}{3}
+      \field{title}{Foundations and Trendso in Optimization}
+      \field{usera}{J}
+      \field{userd}{F}
+      \field{usere}{Parikh N, Boyd S, et al}
+      \field{userf}{Parikh N, Boyd S, et al}
+      \field{volume}{1}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{pages}{127\bibrangedash 239}
+      \range{pages}{113}
+      \keyw{2014Prox}
+    \endentry
+    \entry{1963A}{article}{}
+      \name{author}{2}{}{%
+        {{hash=97f8f840c3f242a2ae286e30b4dfd9cc}{%
+           family={Fletcher},
+           familyi={F\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a4272b767d5bf6418003d8c1735b8b5a}{%
+           family={Powell},
+           familyi={P\bibinitperiod},
+           given={Mjd},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d1c481ca1e96da7a8558b410de99811}
+      \strng{fullhash}{7d1c481ca1e96da7a8558b410de99811}
+      \strng{bibnamehash}{7d1c481ca1e96da7a8558b410de99811}
+      \strng{authorbibnamehash}{7d1c481ca1e96da7a8558b410de99811}
+      \strng{authornamehash}{7d1c481ca1e96da7a8558b410de99811}
+      \strng{authorfullhash}{7d1c481ca1e96da7a8558b410de99811}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Computer Journal}
+      \field{title}{A Rapidly Convergent Descent Method for Minimization}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Fletcher, R. and Powell, Mjd}
+      \field{userf}{Fletcher, R. and Powell, Mjd}
+      \field{volume}{6}
+      \field{year}{1963}
+      \field{dateera}{ce}
+      \field{pages}{163\bibrangedash 168}
+      \range{pages}{6}
+      \keyw{1963A}
+    \endentry
+    \entry{1989On}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d9581e994f03d37a5285eabae0da578e}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={D.\bibnamedelimi C.},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=a375d39ab0f7a753973e8e3564576d56}{%
+           family={Nocedal},
+           familyi={N\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \strng{fullhash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \strng{bibnamehash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \strng{authorbibnamehash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \strng{authornamehash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \strng{authorfullhash}{f1b70a2d7354f7fd2f598ddfb7f1f908}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{number}{1}
+      \field{title}{On the limited memory BFGS method for large scale optimization}
+      \field{usera}{J}
+      \field{userd}{O}
+      \field{usere}{Liu, D. C. and Nocedal, J.}
+      \field{userf}{Liu, D. C. and Nocedal, J.}
+      \field{volume}{45}
+      \field{year}{1989}
+      \field{dateera}{ce}
+      \field{pages}{503\bibrangedash 528}
+      \range{pages}{26}
+      \keyw{1989On}
+    \endentry
+    \entry{1992Global}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c8e72361d55bce6469af1394b829af4f}{%
+           family={Gilbert},
+           familyi={G\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=a375d39ab0f7a753973e8e3564576d56}{%
+           family={Nocedal},
+           familyi={N\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \strng{fullhash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \strng{bibnamehash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \strng{authorbibnamehash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \strng{authornamehash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \strng{authorfullhash}{7944e07c4b4266e965361d50a3b5e5f0}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Siam Journal on Optimization}
+      \field{number}{1}
+      \field{title}{Global convergence properties of conjugate gradient methods for optimization}
+      \field{usera}{J}
+      \field{userd}{G}
+      \field{usere}{Gilbert, J. C. and Nocedal, J.}
+      \field{userf}{Gilbert, J. C. and Nocedal, J.}
+      \field{volume}{2}
+      \field{year}{1992}
+      \field{dateera}{ce}
+      \field{pages}{21\bibrangedash 42}
+      \range{pages}{22}
+      \keyw{1992Global}
+    \endentry
+    \entry{1976AugLagrange}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d67f870962eede33b7bfc844dd43b460}{%
+           family={T},
+           familyi={T\bibinitperiod},
+           given={Rockafellar\bibnamedelima R},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d67f870962eede33b7bfc844dd43b460}
+      \strng{fullhash}{d67f870962eede33b7bfc844dd43b460}
+      \strng{bibnamehash}{d67f870962eede33b7bfc844dd43b460}
+      \strng{authorbibnamehash}{d67f870962eede33b7bfc844dd43b460}
+      \strng{authornamehash}{d67f870962eede33b7bfc844dd43b460}
+      \strng{authorfullhash}{d67f870962eede33b7bfc844dd43b460}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of Operations Research}
+      \field{number}{2}
+      \field{title}{Augmented Lagrangians and applications of the proximal point algorithm in convex programming}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Rockafellar R T}
+      \field{userf}{Rockafellar R T}
+      \field{volume}{1}
+      \field{year}{1976}
+      \field{dateera}{ce}
+      \field{pages}{97\bibrangedash 116}
+      \range{pages}{20}
+      \keyw{1976AugLagrange}
+    \endentry
+    \entry{1975ADMMBook}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e28e583496a6313fd13e0a8d1fb13a57}{%
+           family={Gabay\bibnamedelima D},
+           familyi={G\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Mercier\bibnamedelima B},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institut de recherche d'informatique et d'automatique}%
+      }
+      \strng{namehash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \strng{fullhash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \strng{bibnamehash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \strng{authorbibnamehash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \strng{authornamehash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \strng{authorfullhash}{e28e583496a6313fd13e0a8d1fb13a57}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A dual algorithm for the solution of non linear variational problems via finite element approximation}
+      \field{usera}{M}
+      \field{userd}{A}
+      \field{usere}{Gabay D, Mercier B}
+      \field{userf}{Gabay D, Mercier B}
+      \field{year}{1975}
+      \field{dateera}{ce}
+      \keyw{1975ADMMBook}
+    \endentry
+    \entry{2016ADMM}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ff2787e17c7d5068d74fb65283a24321}{%
+           family={Deng\bibnamedelima W},
+           familyi={D\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Yin\bibnamedelima W},
+           giveni={Y\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff2787e17c7d5068d74fb65283a24321}
+      \strng{fullhash}{ff2787e17c7d5068d74fb65283a24321}
+      \strng{bibnamehash}{ff2787e17c7d5068d74fb65283a24321}
+      \strng{authorbibnamehash}{ff2787e17c7d5068d74fb65283a24321}
+      \strng{authornamehash}{ff2787e17c7d5068d74fb65283a24321}
+      \strng{authorfullhash}{ff2787e17c7d5068d74fb65283a24321}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Scientific Computing}
+      \field{number}{3}
+      \field{title}{On the global and linear convergence of the generalized alternating direction method of multipliers}
+      \field{usera}{J}
+      \field{userd}{O}
+      \field{usere}{Deng W, Yin W}
+      \field{userf}{Deng W, Yin W}
+      \field{volume}{66}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{889\bibrangedash 916}
+      \range{pages}{28}
+      \keyw{2016ADMM}
+    \endentry
+    \entry{2017ADMM}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5335caadb0556dedff4f41ca84aa353f}{%
+           family={Chen\bibnamedelima L},
+           familyi={C\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Toh\bibnamedelimb K\bibnamedelima C},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim C\bibinitperiod},
+           suffix={Sun\bibnamedelima D},
+           suffixi={S\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{5335caadb0556dedff4f41ca84aa353f}
+      \strng{fullhash}{5335caadb0556dedff4f41ca84aa353f}
+      \strng{bibnamehash}{5335caadb0556dedff4f41ca84aa353f}
+      \strng{authorbibnamehash}{5335caadb0556dedff4f41ca84aa353f}
+      \strng{authornamehash}{5335caadb0556dedff4f41ca84aa353f}
+      \strng{authorfullhash}{5335caadb0556dedff4f41ca84aa353f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Optimization and Applications}
+      \field{number}{2}
+      \field{title}{A note on the convergence of ADMM for linearly constrained convex optimization problems}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Chen L, Sun D, Toh K C}
+      \field{userf}{Chen L, Sun D, Toh K C}
+      \field{volume}{66}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{pages}{327\bibrangedash 343}
+      \range{pages}{17}
+      \keyw{2017ADMM}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
