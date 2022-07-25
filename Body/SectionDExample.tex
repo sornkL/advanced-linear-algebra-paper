@@ -1,0 +1,73 @@
+\section{表与图}这节用来展示表格与图片的插入。
+
+\subsection{插图}
+图\ref{figure1}是通栏图的演示：
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=100mm]{example-image}
+    \caption{图片测试（最小宽度）\\Image test (Minimal width)}
+    \label{figure1}
+\end{figure}
+\par 注意：这里为了减少图片上下的空白，使用了float宏包。
+
+% 图\ref{subfigures}是一个多栏图的演示：
+
+% \begin{figure*}[h]\center
+%     \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure1}
+%         \label{subfigure1}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure2}
+%         \label{subfigure2}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure3}
+%         \label{subfigure3}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure4}
+%         \label{subfigure4}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure5}
+%         \label{subfigure5}
+%     \end{subfigure}
+%         \begin{subfigure}[t]{0.25\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{example-image}
+%         \caption{subfigure6}
+%         \label{subfigure6}
+%     \end{subfigure}
+%     \caption{多栏图示例}
+%     \label{subfigures}
+% \end{figure*}
+
+\subsection{表格}
+\par 本来LaTeX里表格的变化是非常多的，但论文中常用三线式，问题反而简单了。下表\ref{tableExample}是一个例子：
+\begin{table}[htbp]\center
+    \caption{示例表格\\Example Table}
+    \begin{tabular}{lcccccl}
+        \toprule
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        \midrule
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        。。 & 。。 & 。。 & 。。 & 。。& 。。 & 。。\\
+        \bottomrule
+    \end{tabular}
+    \label{tableExample}
+\end{table}
+如果你有使用更复杂的表格的需求，请自行查资料完成。

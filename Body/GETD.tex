@@ -1,0 +1,317 @@
+                        
+\section{共轭梯度法}
+    \subsection{线性共轭梯度法}
+        一般的共轭梯度法由线性共轭梯度法推导而来，
+        所以我们首先考虑关于正定二次函数的共轭梯度法，先有以下定义:
+        
+        设G是n阶对称正定矩阵。若$R^n$中两个非零向量$d_i,d_j(i\not=j)$满足
+        \begin{equation}
+            d_i^TGd_j=0,\quad\quad i,j=0,...,n-1,i\not=j
+        \end{equation}则称$d_i$和$d_j$是共轭方向。
+    
+        若$R^n$中n个非零向量$d_0,...,dd_{n-1}$满足
+        \begin{equation}
+            d_i^TGd_j=0,\quad\quad i,j=0,...,n-1,i\not=j
+        \end{equation}则称它们为G的两两共轭方向，或称这个向量组是共轭的。
+
+        共轭方向是根据正定二次函数$f(x)=\frac{1}{2}x^TGx+b^Tx$的梯度来构造的，
+        所以我们可以由此导出共轭梯度法的迭代方向$d_k=-g_k+\beta_{k-1}d_{k-1}$.
+        因为对二次正定函数有$g_k^Tg_{k-1}=0$，
+        可以得到$\beta_{k-1}=\displaystyle\frac{g_k^Tg_k}{g_{k-1}^Tg_{k-1}}$
+    
+    % \subsubsection{线性共轭梯度法的算法}
+    %     Step1. 给定初始点$x_0\in \mathbb{R}^{n}, d_0=-g_0, \varepsilon>0,k:=0$;
+        
+    %     Step2. 若终止条件满足，则输出有关信息，停止迭代；
+        
+    %     Step3. 精确线搜索计算$\alpha_k=-\displaystyle\frac{g_k^Td_k}{d_k^TGd_k}$;
+        
+    %     Step4. 令$x_{k+1}:=x_k+\alpha_kd_k$，
+    %           并计算方向$d_{k+1}=-g_{k+1}+\beta_kd_k,k:=k+1$，转Step2.
+               
+        \begin{algorithm}
+            \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+        
+            \SetAlgoLined
+            \Input{$x_0\in \mathbb{R}^{n}, d_0=-g_0, \varepsilon>0$，初始化设置$k=0$}
+            \Output{最优解$x_{k+1}$}
+        
+            \While{未收敛} {
+                $\alpha_k=-\displaystyle\frac{g_k^Td_k}{d_k^TGd_k}$
+                
+                $x_{k+1}=x_k+\alpha_kd_k$
+                
+                $d_{k+1}=-g_{k+1}+\beta_kd_k,k=k+1$
+            }
+            \caption{线性共轭梯度法的算法}
+        \end{algorithm}
+               
+               
+    \subsection{非线性共轭梯度法}
+    由线性共轭梯度法推广而来，迭代方向与线性共轭梯度相同，
+    由以下两个不同的非线性共轭梯度公式，
+    可以给出非线性共轭梯度方法的算法步骤。
+    
+        FR公式：
+        \begin{equation}
+            \beta_{k-1}^{FR}=\displaystyle\frac{g_k^Tg_k}{g_{k-1}^Tg_{k-1}}
+        \end{equation}
+               
+        PRP公式：
+        \begin{equation}
+            \beta_{k-1}^{PRP}=\displaystyle\frac{g_k^T(g_k-g_{k-1})}{g_{k-1}^Tg_{k-1}}
+        \end{equation}
+        
+        % \subsubsection{非线性共轭梯度法的算法}
+        % Step1. 给定初始点$x_0\in \mathbb{R}^{n}, d_0=-g_0, \varepsilon>0,k:=0$;
+        
+        % Step2. 若终止条件满足，则输出有关信息，停止迭代;
+        
+        % Step3. 做一维线搜索求$\alpha_k$;
+        
+        % Step4. 计算$x_{k+1}:=x_k+\alpha_kd_k$;
+        
+        % Step5. 计算$\beta_k,d_{k+1}=-g_{k+1}+\beta+kd_k,k:=k+1$，转Step2.
+        \begin{algorithm}
+            \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+        
+            \SetAlgoLined
+            \Input{$x_0\in \mathbb{R}^{n}, d_0=-g_0, \varepsilon>0$，初始化设置$k=0$}
+            \Output{最优解$x_{k+1}$}
+        
+            \While{未收敛} {
+                一维线搜索求$\alpha_k$
+                
+                $x_{k+1}=x_k+\alpha_kd_k$
+        
+                $\beta_k,d_{k+1}=-g_{k+1}+\beta+kd_k,k=k+1$
+            }
+            \caption{非线性共轭梯度法的算法}
+        \end{algorithm}
+        
+        \subsubsection{非线性共轭梯度法FR的算例}
+        \begin{example}
+            \begin{equation}
+                \mathbb{min}f(x) = \frac{3}{2}x_1^2+\frac{1}{2}x_2^2-x_1x_2-2x_1,
+                x_0 = (0,0)^T.
+            \nonumber
+            \end{equation}
+        \end{example}
+        \begin{solution}
+            \begin{equation}
+                g(x) = 
+                \begin{pmatrix}
+                    3x_1-x_2-2 \\
+                    -x_1+x_2  
+                \end{pmatrix},
+                G(x) = 
+                \begin{pmatrix}
+                    3 & -1\\
+                    -1 & 1   
+                \end{pmatrix}.
+            \nonumber    
+            \end{equation}.
+            因$g_0=(-2,0)^T$，故取$d_0=(2,0)^T$，
+            从$x_0$出发，沿$d_0$作一维搜索，即求
+            \begin{equation}
+            \mathbb{min}f(x_0+\alpha_0 d_0) = 6\alpha^2-4\alpha
+                \nonumber
+            \end{equation}
+            的极小点，得步长$\alpha_0 = \frac{1}{3}$。于是得到
+            \begin{equation}
+                x_1=x_0 + \alpha_0d_0=(\frac{2}{3},0)^T,
+                g_1 = (0,-\frac{2}{3})
+                \nonumber
+            \end{equation}.
+            由FR公式得
+            \begin{equation}
+                \beta_{0}^{FR}=\displaystyle\frac{g_1^Tg_1}{g_{0}^Tg_{0}} = \frac{1}{9}
+                \nonumber
+            \end{equation},
+            故
+            \begin{equation}
+                d_1 = -g_1 + \beta_0d_0=(\frac{2}{9},\frac{2}{3})^T
+                \nonumber
+            \end{equation}.
+            从$x_1$出发，沿$d_1$作一维搜索，求
+            \begin{equation}
+                \mathbb{min}f(x_1+\alpha_1 d_1) = 
+                \frac{4}{27}\alpha^2-\frac{4}{9}\alpha + \frac{2}{3}
+                \nonumber
+            \end{equation}
+            的极小点，解得$\alpha_1= \frac{3}{2}$，
+            于是$x_2 = x_1 + \alpha_1d_1 = (1,1)^T$。
+            此时$d_2=(0,0)^T$，故$x_{k+1}=(1,1)^T, f_{k+1} = -1$。
+        \end{solution}
+        
+        \subsubsection{非线性共轭梯度法的理论结果}\cite{1992Global}
+        \begin{theorem}\label{71}
+            对于FR方法，若$\alpha_k$由强Wolfe准则得到，
+            且$\sigma\in(0,\frac{1}{2})$，则$d_k$满足
+            \begin{equation}\label{getd31}
+                -\displaystyle\sum^{k-1}_{j=0}\sigma^j \leq
+                \displaystyle\frac{g_k^Td_k}{\|g_k\|^2}\leq
+                -2 + \displaystyle\sum^{k-1}_{j=0}\sigma^j, k = 1,...
+            \end{equation}其中$d_k$是下降方向
+        \end{theorem}
+        \begin{proof}   
+            通过数学归纳法进行证明。
+            由于\ref{getd31}这个结果显然适用于k=1，
+            因为所有三个项都是-1。
+            假设\ref{getd31}对某些k>1成立，
+            这意味着$<gk，dk><0$，因为
+            \begin{equation}
+                -2 + \displaystyle\sum^{k-1}_{j=0}\sigma^J < 
+                -2 + \frac{1}{1-\sigma} = 
+                \frac{2\sigma-1}{1-\sigma} < 0,
+            \nonumber
+            \end{equation}
+            在$\sigma < \frac{1}{2}$时，根据FR公式，我们得到
+            \begin{equation}\label{getd32}
+                \displaystyle\frac{g_{k+1}^Td_{k+1}}{\|g_{k+1}\|^2} = 
+                -1 + \beta_{k+1}\displaystyle\frac{g_{k+1}^Td_k}{\|g_{k+1}\|^2} = 
+                -1 + \displaystyle\frac{\beta_{k+1}}{\beta_{k+1}^{\mathbb{FR}}}
+                \displaystyle\frac{g_{k+1}^Td_k}{\|g_{k}\|^2}
+            \nonumber
+            \end{equation}.
+            根据线搜索条件，我们得到
+            \begin{equation}
+                |\beta+{k+1}(g_{k+1}^Td_k)| \leq -\sigma||\beta+{k+1}|(g_{k}^Td_k)
+            \nonumber
+            \end{equation},
+            将上式与式\ref{getd32}联立，得到
+            \begin{equation}
+                -1 + \sigma \displaystyle\frac{|\beta_{k+1}|}{\beta_{k+1}^{\mathbb{FR}}}
+                \displaystyle\frac{g_{k}^Td_k}{\|g_{k}\|^2}
+                \leq
+                \displaystyle\frac{g_{k+1}^Td_{k+1}}{\|g_{k}\|^2}
+                \leq
+                -1 - \sigma \displaystyle\frac{|\beta_{k+1}|}{\beta_{k+1}^{\mathbb{FR}}}
+                \displaystyle\frac{g_{k}^Td_k}{\|g_{k}\|^2}
+            \nonumber
+            \end{equation}.
+            引入定理\ref{71}中的左侧假设条件，我们可以得到
+            \begin{equation}
+                -1 - \sigma \displaystyle\frac{|\beta_{k+1}|}{\beta_{k+1}^{\mathbb{FR}}}
+                \displaystyle\sum^{k-1}_{j=0}\sigma^j
+                \leq
+                \displaystyle\frac{g_{k+1}^Td_{k+1}}{\|g_{k}\|^2}
+                \leq
+                -1 + \sigma \displaystyle\frac{|\beta_{k+1}|}{\beta_{k+1}^{\mathbb{FR}}}
+                \displaystyle\sum^{k-1}_{j=0}\sigma^j 
+            \nonumber
+            \end{equation}.
+            由于$|\beta_k| \leq \beta_k^{\mathbb{FR}}$，
+            并且$\displaystyle\sum^{k-1}_{j=0}\sigma^{j+1} = \displaystyle\sum^{k}_{j=0}\sigma^{j} - 1 $,
+            我们可以得到定理\ref{71}对于$k+1$也成立，故数学归纳法成立。
+        \end{proof}
+        
+            如果采用非精确线搜索，FR和PRP方法都有可能产生式上升的方向。
+            而该定理告诉我们对于FR方法而言，只有当使用强Wolfe线搜索，
+            并且保证$\sigma\in(0,\frac{1}{2})$时，得到的方向才是下降方向。
+            
+        \begin{theorem}[使用精确线搜索的FR方法的收敛性]\cite{1992Global}
+            设有$f(x)$下界，$g(x)$满足Lipschitz条件，
+            对使用精确线搜索准则的FR方法，
+            则存在N，使得$g_N=0$，或者$\displaystyle\lim_{k\rightarrow\infty}inf\|g_k\|=0$
+        \end{theorem}
+        \begin{proof}
+            根据定理\ref{71}以及在强Wolfe准则下的FR公式$|g(x_k+\alpha_kd_k)^Td_k| \leq -\sigma g_k^Td_k$,
+            我们得到
+            \begin{equation*}
+            \begin{split}
+                |g_k^Td_{k-1}|  &\leq -\sigma g_{k-1}^Td_{k-1}
+                                &\leq \sigma \displaystyle\sum^{k-2}_{j=0}\sigma^j\|g_{k-1}\|^2
+                                &\leq \displaystyle\frac{\sigma}{1-\sigma}\sigma^j\|g_{k-1}\|^2.
+            \end{split}
+            \end{equation*}
+            根据梯度下降方向以及定理\ref{71}，可以得到
+            \begin{equation*}
+            \begin{split}
+                \|d_k\|^2       &\leq \|g_k\|^2 + 2|\beta_k| g_{k}^Td_{k-1} + \beta_k^2\|d_{k-1}\|^2
+                                &\leq \|g_k\|^2 + \displaystyle\frac{2\sigma}{1-\sigma}|\beta_k| \|g_{k-1}\|^2 + \beta_k^2\|d_{k-1}\|^2
+                                &\leq \displaystyle\frac{1+\sigma}{1-\sigma}\|g_k\|^2 + \beta_k^2\|d_{k-1}\|^2.
+            \end{split}
+            \end{equation*}
+            重复使用这一关系，
+            我们定义$\hat{\sigma} := \displaystyle\frac{1+\sigma}{1-\sigma} \geq 1$，
+            并且使用条件$|\beta_k| \leq \beta_k^{\mathbb{FR}}$，
+            得到
+            \begin{equation*}
+            \begin{split}
+                \|d_k\|^2       &\leq \hat{\sigma}\|g_k\|^2 + \beta_k^2(\hat{\sigma}\|g_{k-1}\|^2 + \beta_{k-1}^2
+                                                                                                 \|d_{k-2}\|^2)
+                                &\leq \hat{\sigma}\|g_k\|^4 + \displaystyle\sum_{j=1}^k\|g_j\|^{-2}.
+            \end{split}
+            \end{equation*}
+            我们假设对于所有的$k$，都有$\|g_k\| \geq \gamma > 0$，这表示
+            \begin{equation}
+                \|d_k\|^2 \leq \displaystyle\frac{\hat{\sigma}\gamma^4}{\gamma^2}k.
+            \end{equation}
+            由此得证
+        \end{proof}
+        
+            该定理从理论上证明了精确线搜索下FR方法的收敛性，通过定理\ref{71}，
+            可以直到使用强Wolfe线搜索的FR方法在$\sigma\in(0,\frac{1}{2})$
+            时有同样的收敛结果。
+            而证明这一定理我们使用了Zoutendijk条件，其使用率相对广泛。
+        
+        \begin{theorem}[Zoutendijk条件]
+            设有$f(x)$下界，$g(x)$满足Lipschitz条件，
+            使用Wolfe线搜索或精确线搜索准则的，
+            具有$x_{k+1}=x_{k}+\alpha_kd_k$迭代格式的
+            一般下降方法满足Zoutendijk条件：
+            \begin{equation}
+            \displaystyle\sum_{k\geq0}\frac{(g_k^Td_k)^2}{\|d_k\|^2}<\infty
+            \end{equation}
+        \end{theorem}   
+        \begin{proof}
+            设存在常数$\eta$,对任意$k\geq0$，有.利用Zoutendijk条件
+            \begin{equation}
+                \displaystyle\sum_{k\geq0}\frac{(g_k^\mathbb{T}d_k)^2}{\|d_k\|^2}<\infty=
+                \displaystyle\sum_{k\geq0}\|g_k\|^2\cos^2\theta_k < \infty,
+                \nonumber
+        	\end{equation},
+            其中$\theta_k = <d_k, -g_k>$,知$\displaystyle\lim_{k\to\infty}\cos\theta_k=0$.
+            
+            考虑到FR方法的迭代格式和精确线搜索的特点，
+            在第$k$次迭代，我们有$\|d_k\|=\|g_k\|\sec\theta_k $；
+            在第$k+1$次迭代，我们有$\beta_k\|d_k\| = \|g_{k+1}\|\tan\theta_{k+1}$.
+            结合这两个式子以及$\beta_k$的表示，就有
+            \begin{equation}
+                \tan\theta_{k+1}=\sec\theta_k\displaystyle\frac{\|g_{k+1}\|}{\|g_k\|}
+                \nonumber
+        	\end{equation},
+        	上式两边平方，并利用$\sec^2\theta_k=1+\tan^2\theta_k$，便得到
+            \begin{equation}
+                \displaystyle\frac{\tan^2\theta_{k+1}}{\|g_{k+1}\|^2} = 
+                \displaystyle\frac{1}{\|g_k\|^2} + 
+                \displaystyle\frac{\tan^2\theta_k}{\|g_k\|^2}
+                \nonumber
+        	\end{equation}.
+        	利用这个关系递推，可以得到
+            \begin{equation}
+                \displaystyle\frac{\tan^2\theta_k}{\|g_k\|^2} = 
+                \displaystyle\sum_{i=0}^{k-1}\frac{1}{\|g_i\|^2} 
+                \nonumber
+        	\end{equation},
+        	其中$d_0=-g_0$，从而
+            \begin{equation}
+                \displaystyle\frac{\tan^2\theta_k}{\|g_k\|^2} \leq
+                \displaystyle\frac{k}{\eta^2}
+                \nonumber
+        	\end{equation},
+        	即
+            \begin{equation}
+                \displaystyle\frac{\eta^2}{k} \leq
+                \displaystyle\frac{\|g_k\|^2}{\tan^2\theta_k} =
+                \|g_k\|^2\cot^2\theta_k
+                \nonumber
+        	\end{equation}.
+        	当充分大时，因为$\cot^2\theta_k\leq2\cos^2\theta_k$，就有
+            \begin{equation}
+                \displaystyle\sum_{k\geq0}\|g_k\|^2\cot^2\theta_k = \infty
+                \nonumber
+        	\end{equation}.
+        	这与Zoutendijk条件矛盾。
+        \end{proof}

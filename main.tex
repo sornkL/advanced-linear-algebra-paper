@@ -1,0 +1,114 @@
+% !TEX root
+% !TEX program = xelatex
+% !BIB program = biber
+
+% \def \PrintMode{} %在使用电子版论文时，请将此行注释。在打印纸质论文时，请保持本行命令不被注释，然后打印时选择双面打印即可。
+
+%用来控制是否启动打印模式的宏，请勿改动。
+\ifx \PrintMode \undefined
+    \def \SideMode{oneside}
+    \def \ClearPageStyle{\clearpage}
+\else
+    \def \SideMode{twoside}
+    \def \ClearPageStyle{\cleardoublepage}
+\fi
+
+%A4纸，UTF-8
+\documentclass[\SideMode, UTF8]{article} 
+
+%加载各宏包以及本模板的主要设置
+\input{packages_and_settings.tex} 
+
+%加载bib文件（参考文献）
+\addbibresource{./Reference/ref_issue01.bib} 
+
+\begin{document}
+    %不对正文前的各页面使用页眉页脚
+    \pagestyle{empty} 
+
+    %设置用于首页的页边距
+    \newgeometry{top=2.0cm, bottom=2.0cm,left=3.18cm, right=3.18cm} 
+    %插入内封面
+    \input{./Preface/inner-cover.tex} 
+    \ClearPageStyle
+
+    \restoregeometry
+    %生成目录
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
+    \begin{spacing}{1}
+        \tableofcontents
+    \end{spacing}
+    \ClearPageStyle
+    \pagenumbering{Roman}
+
+    %生成中文摘要及关键词
+    \input{./Preface/abstract_zh.tex} 
+    \ClearPageStyle
+    \input{./Preface/abstract_en.tex} 
+    \ClearPageStyle
+    % \input{./Preface/name.tex} 
+    % \ClearPageStyle
+    % \input{./Preface/notation.tex} 
+    % \ClearPageStyle
+    
+    % \addcontentsline{toc}{chapter}{符号表}
+    % \include{Body/denotation}
+    % \addcontentsline{toc}{chapter}{缩略表}
+    % \include{Body/abbreviation}
+
+    \pagenumbering{arabic}
+    \pagestyle{fancy} %开始使用页眉页脚
+    \setcounter{page}{1} %论文页码从正文开始记数
+    
+    
+    % Introduction
+    \input{./Body/Introduction.tex}
+    \newpage
+    
+    % 数学概念
+    \input{./Body/Concept.tex}
+    \newpage
+    
+    % 梯度下降法
+    \input{./Body/GD.tex} 
+    \newpage
+    
+    % 随机梯度下降法
+    \input{./Body/SGD.tex} 
+    \newpage
+    
+    % % proximal
+    \input{./Body/ProximalGradientMethod.tex}
+    \newpage
+    
+    % % Newton
+    \input{./Body/NewtonMethod.tex}
+    \newpage
+    
+    %共轭梯度
+    \input{./Body/GETD.tex}
+    \newpage
+    
+    
+    % % ADMM
+    \input{./Body/ADMM.tex}
+    \newpage
+    
+    % 总结
+    \input{./Body/Conclusion.tex}
+    \newpage
+    
+    \ClearPageStyle
+
+    %生成参考文献
+    \phantomsection
+    \addcontentsline{toc}{section}{参考文献}
+    \printbibliography[title={\centerline{\bfseries\sffamily \zihao {-3}参考文献}}]
+    \ClearPageStyle
+    
+    \appendix
+    % 附录(todo 格式)
+    \input{./Body/Appendix.tex}
+    \newpage
+
+\end{document} 

@@ -1,0 +1,196 @@
+\section{随机梯度类方法}
+随机梯度类方法是处理大规模最优化问题的有效方法，最早在1951年由Robbins和Monro所提出\cite{SGD}，多用于支持向量机、逻辑回归（LR）等凸损失函数下的线性分类器的学习，并且随机梯度类方法已成功应用于文本分类和自然语言处理中经常遇到的大规模和稀疏机器学习问题。以大规模监督机器学习问题为例，监督学习任务所对应的训练数据集包含$n$条数据$\left\{\left(\bm{x}_{i}, y_{i}\right), i=1, \cdots, n\right\}$。 假设预测模型为$h(\bm{x}, \mathrm{w})$，其中参数$\mathrm{w}$为预测模型的参数，且$\mathrm{w} \in \mathbb{R}^{d}$。带 正则项的监督学习任务可以建模为以下形式，其中$\ell(x)$为凸函数，
+\begin{equation}
+    \min _{\mathbf{w} \in \mathbb{R}^{d}} \frac{1}{n} \sum_{i=1}^{n} \ell\left(h\left(\bm{x}_{i}, \mathrm{w}\right) ; y_{i}\right)+\lambda h(\mathrm{w})
+    \text {.}
+    \label{eqt6_1}
+\end{equation}
+
+\par 随机梯度类方法尤其适用于数据量$n$是大规模的情形。对于上面介绍的监督学习任务(\ref{eqt6_1})，其参数化模型可以被归纳为
+\begin{equation}
+    \min _{\mathrm{x} \in \mathbb{R}^{d}} \underbrace{\frac{1}{n} \sum_{i=1}^{n} f_{i}(\mathrm{x})}
+    \label{eqt6_2}
+    \text {.}
+\end{equation}
+该问题通常被称为有限求和经验风险极小化问题，其也是机器学习任务中经常面对的结构型最优化问题，但是机器学习任务更重要的核心目标是极小化测试任务中的风险（损失）。在解决机器学习任务时，没有必要过度强调对训练阶段任务的求解计算精度，而是需要更关注测试阶段的任务，即所得到的 “最优解” 在测试阶段的表现。因此，针对以监督学习为代表的机器学习任务，所设计的算法应该具备快速高效求解能力，适合处理海量数据，而无需为过高的求解精度而付出较多的计算迭代。
+
+\subsection{经典随机梯度法}
+针对结构型最优化问题(\ref{eqt6_2})，即
+\begin{equation}
+    \min _{\mathrm{x} \in \mathbb{R}^{d}} \frac{1}{n} \sum_{i=1}^{n} f_{i}(\mathrm{x})
+    \text {.}
+    \nonumber
+\end{equation}
+针对该问题的经典随机梯度法(Stochastic gradient descent method, SGD)\cite{SGD}的基本迭代框架为
+\begin{equation}
+    \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k} \nabla f_{i(k)}\left(\mathrm{x}^{k}\right),
+    \label{eqt6_3}
+\end{equation}
+其中$i(k)$是从$\{1, 2, \cdots, n\}$中允许放回的按均匀分布 (每个$f_{i}$被选择概率是$\frac{1}{n}$）随机选取的。定义Polyak-Ruppert平均\cite{2021Statistical}为
+\begin{equation}
+    \bar{\theta}_{k}=\frac{1}{k+1} \sum_{j=1}^{k} \theta^{j}
+    \label{eqt6_4}
+    \text {.}
+\end{equation}
+对于该基本随机梯度法可以证明其对于凸优化问题的收敛性和收敛速度。如果函数$f_{i}$均为凸函数且为$L-$光滑的，且令$g(x)=\frac{1}{n} \sum_{i=1}^{n} f_{i}(\mathrm{x})$，那么可以得到期望的收敛速度：
+\begin{equation}
+    \mathbb{E}\left[g\left(\overline{\mathrm{x}}_{k}\right)-g\left(\mathrm{x}^{*}\right)\right] \leq \mathcal{O}\left(\frac{1}{\sqrt{k}}\right), \quad \alpha_{k}=\frac{1}{L \sqrt{k}}
+    \text {.}
+    \label{eqt6_5}
+\end{equation}
+该结论同时说明了算法的收敛性和收敛速度\cite{SGD}，可以看出对于一般的凸优化问题，基本随机梯度法比经典梯度下降法的收敛速度慢，但随机梯度法每个迭代步不需要计算整体目标函数$g(\mathrm{w})$的梯度，而是从样本中随机抽出一组，训练后按梯度更新一次，然后反复抽取和更新，在样本量及其大的情况下，无需训练完所有的样本就可以获得一个损失值在可接受范围之内的模型了。进一步，如果函数$g(\mathrm{w})$为$\mu-$强凸函数，那么可以得到
+\begin{equation}
+    \mathbb{E}\left[g\left(\overline{\mathrm{x}}_{k}\right)-g\left(\mathrm{x}^{*}\right)\right] \leq \mathcal{O}\left(\frac{1}{\mu k}\right), \quad \alpha_{k}=\frac{1}{\mu k}
+    \label{eqt6_6}
+    \text {,}
+\end{equation}
+其可以达到$\mathcal{O}(1 / k)$迭代复杂，但是相比于梯度下降法在强凸假设前提下的线性收敛速度仍要慢。
+
+\subsection{随机平均梯度法}
+从基本随机梯度法来看，每一个迭代步都只利用当前迭代步所选择到的数据进行更新，而未充分利用历史梯度信息。随机平均梯度法的基本思想是将计算过的$f_i$的梯度都保存在内存中，并不断更新且用于算法设计，其可以看作是随机版本的增量平均梯度方法。随机平均梯度法（Stochased average gradient method, SAG）\cite{SAG}的具体格式如算法(\ref{alg6_1})所示。
+
+\begin{algorithm}
+    \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+    \SetAlgoLined
+    \Input{目标函数$f_{i}$}
+    \Output{最优解$\tilde{\mathrm{x}}$}
+    \For{$i=1,2, \cdots$} {
+        函数$f_{i}$在第$k$步迭代所对应的梯度记作$\bm{y}_{i}^{k}$
+
+        随机可放回的选择$i(k) \in\{1, \cdots, n\}$
+        
+        更新梯度信息，即
+            \begin{equation}
+                \left\{\begin{array}{ll}
+                \bm{y}_{j}^{k+1}=\nabla f_{j}\left(\mathrm{x}^{k}\right), & j=i(k) \\
+                \bm{y}_{j}^{k+1}=\bm{y}_{j}^{k}, & j \neq i(k)
+                \end{array}\right.
+                \nonumber
+            \end{equation}
+            
+        更新参数变量$\mathrm{x}^{k+1}$，即
+            \begin{equation}
+                \mathrm{x}^{k+1}=\mathrm{x}^{k}-\frac{\alpha_{k}}{n} \sum_{j=1}^{n} y_{j}^{k+1} ,
+                \nonumber
+            \end{equation}
+    }
+    \caption{随机平均梯度法}
+    \label{alg6_1}
+\end{algorithm}
+
+\par 随机平均梯度法与经典随机梯度法一致，在每个迭代步只需计算一次单个函数梯度，但是随机平均梯度法需要在内存中存储$n$个$d$维梯度向量，在存储需求方面比随机梯度法显著增加。理论上，随机平均梯度法在$\mu-$强凸假设下可以达到线性收敛速度，即
+\begin{equation}
+    \mathbb{E}\left[g\left(\overline{\mathrm{x}}_{k}\right)-g\left(\mathrm{x}^{*}\right)\right] \leq \mathcal{O}\left\{\left(1-\min \left\{\frac{1}{8 n}, \frac{\mu}{16 L}\right\}\right)^{k}\right\} ,
+    \nonumber
+\end{equation}
+而这一优势也是因为对已计算历史梯度信息的充分利用所获得的\cite{SAG}。
+
+\subsection{方差减小随机梯度法}
+方差减小技巧是统计学中的一种常用技巧，其核心是通过设计一个新的随机变量，并结合采样技术降低已知随机变量的方差\cite{SVRG}。假设$\mathbb{X}$为已知随机变量，给定一个新的随机变量$\mathbb{Y}$以及它的期望为$\mathbb{E}[\mathbb{Y}]$，定义新的随机变量$\mathbb{Z}_{\alpha}$使得
+\begin{equation}
+    \mathbb{Z}_{\alpha}=\alpha(\mathbb{X}-\mathbb{Y})+\mathbb{E}[\mathbb{Y}],
+    \nonumber
+\end{equation}
+该随机变量$\mathbb{Z}_{\alpha}$的期望是
+\begin{equation}
+    \mathbb{E}\left[\mathbb{Z}_{\alpha}\right]=\alpha \mathbb{E}[\mathbb{X}]+(1-\alpha) \mathbb{E}[\mathbb{Y}] ,
+    \nonumber
+\end{equation}
+而方差是
+\begin{equation}
+    \operatorname{Var}\left[\mathbb{Z}_{\alpha}\right]=\alpha^{2}[\operatorname{Var}[\mathbb{X}]+\operatorname{Var}[\mathbb{Y}]-2 \operatorname{Cov}(\mathbb{X}, \mathbb{Y})]
+    \text {.}
+    \nonumber
+\end{equation}
+值得注意的是如果$\alpha=1$，那么可以得到$\mathbb{E}\left[\mathbb{Z}_{\alpha}\right]=\mathbb{E}[\mathbb{X}]$，即随机变量$\mathbb{Z}_{\alpha}$可以看作为随机变量$\mathbb{X}$的一种无偏随机变量估计。当$\mathbb{Y}$与$\mathbb{X}$负相关时，此时可以得到$\operatorname{Var}\left[\mathbb{Z}_{\alpha}\right]<\operatorname{Var}[\mathbb{X}]$。如果$\alpha<1$，那么虽然$\mathbb{Z}_{\alpha}$是有偏的，但是$\operatorname{Var}\left[\mathbb{Z}_{\alpha}\right]$依然比$\operatorname{Var}[\mathbb{X}]$小。
+\par 为什么以及如何利用方差减小技巧来提升随机梯度法的求解计算效率？首先我们回到经典随机梯度法，其迭代格式为
+\begin{equation}
+    \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k} \nabla f_{i(k)}\left(\mathrm{x}^{k}\right) ,
+    \nonumber
+\end{equation}
+注意到如果把方差减小算法中随机变量$\mathbb{X}$定义为$\mathbb{X}=\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)$，那么
+\begin{equation}
+    \mathbb{E}[\mathbb{X}]=\mathbb{E}\left[\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)\right]=\frac{1}{n} \sum_{j=1}^{n} \nabla f_{j}\left(\mathrm{x}^{k}\right)=\nabla g\left(\mathrm{x}^{k}\right) .
+    \nonumber
+\end{equation}
+该随机变量$\mathbb{X}$的期望为整个目标函数$g(\mathrm{x})$在$\mathrm{x}^{k}$的梯度，那么随机梯度法所用的梯度信息可以看作为对整体函数梯度的随机采样。既然可以看作为随机采样，我们希望在$\mathbb{X}$的基础上建立一种新的随机变量进行梯度采样，这个新的随机变量依然是整体的无偏估计，但是比随机变量$\mathbb{X}$有更小的方差，从而使得每一个的随机变量采样估计更加稳定 (波动更小)。此时根据方差减小技巧，引人$\mathbb{Y}=\nabla f_{i(k)}(\tilde{\mathrm{x}})$，其中$\tilde{\mathrm{x}} $为某一个固定参数，$\alpha$设定为1，那么
+\begin{equation}
+    \begin{aligned}
+    \mathbb{Z}_{1} &=\mathbb{X}-\mathbb{Y}+\mathbb{E}[\mathbb{Y}] \\
+    &=\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\nabla f_{i(k)}(\tilde{\mathrm{x}})+\mathbb{E}\left[\nabla f_{i(k)}(\tilde{\mathrm{x}})\right] \\
+    &=\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\nabla f_{i(k)}(\tilde{\mathrm{x}})+\frac{1}{n} \sum_{i=1}^{n} f_{i}(\tilde{\mathrm{x}}).
+    \end{aligned}
+    \nonumber
+\end{equation}
+进一步利用新定义的随机变量$\mathbb{Z}_{1}$来设计新的方差减小随机梯度。综合以上信息，我们给出结合方差减小技巧的随机梯度法 (Stochastic variance reduced gradient method, SVRG) \cite{SVRG}如算法 (\ref{alg6_2}) 所示。
+
+\begin{algorithm}
+    \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+    \SetAlgoLined
+    \Input{初始值$\tilde{\mathrm{w}} \in \mathbb{R}^{d}$}
+    \Output{最优解$\tilde{\mathrm{x}}$}
+
+    \For{$i=1, 2, \cdots$} {
+        计算在$\tilde{\mathrm{x}}$处整个目标函数的梯度信息
+            \begin{equation}
+                \nabla g(\tilde{\mathrm{x}})=\frac{1}{n} \sum_{j=1}^{n} \nabla f_{j}(\tilde{\mathrm{x}});
+                \nonumber
+            \end{equation}
+            
+        令$\mathrm{x}^{0}=\tilde{\mathrm{x}}$
+        
+        \For{$k=0, \cdots, \ell-1$} {
+            选择$i(k)$
+            
+            计算更新$\mathrm{x}^{k+1}$ 
+                \begin{equation}
+                    \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k}\left[\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\nabla f_{i(k)}(\tilde{\mathrm{x}})+\nabla g(\tilde{\mathrm{x}})\right];
+                    \label{eqt6_7}
+                \end{equation}
+        }
+        
+        更新$\tilde{\mathrm{w}}=\mathrm{w}^{\ell}$
+    }
+    \caption{方差减小随机梯度法}
+    \label{alg6_2}
+\end{algorithm}
+
+\par 方差减小随机梯度法的核心是式(\ref{eqt6_7})，而算法通过两层迭代来实现方差减小。外层迭代一般较小，所以全梯度的计算通常会较小，不会占据主要计算。式(\ref{eqt6_7})可以看作为SVRG的代表迭代格式。
+
+\subsection{随机梯度法的扩展讨论}
+首先，我们总结比较一下本章节介绍的几种随机梯度法。
+\begin{equation}
+    \left\{\begin{array}{ll}
+    \text { SGD\cite{SGD}: } & \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k} \nabla f_{i(k)}\left(\mathrm{x}^{k}\right) \\
+    \text { SAG\cite{SAG}: } & \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k}\left[\frac{1}{n}\left(\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\bm{y}_{i(k)}^{k}\right)+\frac{1}{n} \sum_{i=1}^{n} \bm{y}_{i}^{k}\right] \\
+    \text { SVRG\cite{SVRG}: } & \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k}\left[\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\nabla f_{i(k)}(\tilde{\mathrm{x}})+\frac{1}{n} \sum_{i=1}^{n} f_{i}(\tilde{\mathrm{x}})\right] \\
+    \text { SAGA\cite{SAGA}: } & \mathrm{x}^{k+1}=\mathrm{x}^{k}-\alpha_{k}\left[\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)-\bm{y}_{i(k)}^{k}+\frac{1}{n} \sum_{i=1}^{n} \bm{y}_{i}^{k}\right]
+    \end{array}\right .
+\end{equation}
+\par 在机器学习中，最常用的优化算法就是SGD\cite{SGD}，但是由于其每次迭代方向都是随机选择的，所以在下降方向会产生方差，导致在每次迭代（使用固定步长$\alpha$）时，最终是收敛不到最优值的。为了克服这一点，则需要让方差呈递减趋势下降，那么最终算法的将会以线性速度收敛于最优值。基于这种思想，学者提出了SAG\cite{SAG}、SVRG\cite{SVRG}和SAGA\cite{SAGA}这三种算法。SAG算法\cite{SAG}在内存中为每个样本都维护一个旧的梯度$y_i$，随机选择一个样本$i$来更新，并用$d$来更新$\nabla f_{i(k)}\left(\mathrm{x}^{k}\right)$。如此，每次更新的时候仅仅需要计算一个样本的梯度，而不是所有样本的梯度。计算开销与SGD\cite{SGD}无异，但是内存开销要大得多。文献\cite{SAG}中已经证明SAG\cite{SAG}是一种线性收敛算法，这个速度远比SGD\cite{SGD}快。SVRG\cite{SVRG}的算法思路是，每过一段时间计算一次所有样本的梯度$\frac{1}{n} \sum_{i=1}^{n} f_{i}(\tilde{\mathrm{x}})$。相对于SAG\cite{SAG}来说，不需要在内存中为每个样本都维护一个梯度，也就是说节省了内存资源。SAGA算法\cite{SAGA}是SAG\cite{SAG}算法的一个加速版本，和SAG\cite{SAGA}一样，它既不在一个循环里面操作，也不计算批量梯度(除了在初始点)，在每次迭代中，它都计算随机向量$x^k$作为前期迭代中随机梯度的平均值。两者的区别是，SAGA\cite{SAGA}是无偏的方差减小随机梯度方法，而SAG算法\cite{SAG}则是有偏的。
+
+\subsection{随机梯度法的求解应用}
+\begin{example}[矩阵分解模型]
+    以最基本的矩阵分解模型$  r_{u i}=q_{i}^{T} p_{u}  $为例，损失函数可以定义为\\
+    $  J\left(p_{u}, q_{i}\right)=\frac{1}{2}\left(\sum\left(r_{u i}-q_{i}^{T} p_{u}\right)^{2}+\lambda\left(\left\|q_{i}\right\|^{2}+\left\|p_{u}\right\|^{2}\right)\right)$，其中$  \lambda$是正则化系数，这里把对$  p_{u}  $和$  q_{i}  $的正则化系数设置为相同值（也可以为不同值，不使用括号即可）。\\ 下面求损失函数对$  p_{u}  $的偏导：
+\begin{equation}
+\frac{\partial J\left(p_{u}\right)}{\partial p_{u}}=\left(r_{u i}-q_{i}^{T} p_{u}\right)\left(-q_{i}^{T}\right)+\lambda p_{u} .
+    \nonumber
+\end{equation}
+常令
+\begin{equation}
+e_{u i}=r_{u i}-q_{i}^{T} p_{u} ,
+    \nonumber
+\end{equation}
+因此
+\begin{equation}
+p_{u}=p_{u}-\eta \cdot \frac{\partial J\left(p_{u}\right)}{\partial p_{u}}=p_{u}+\eta\left(e_{u i} \cdot q_{i}-\lambda \cdot p_{u}\right) .
+    \nonumber
+\end{equation}
+其中，$  \eta  $表示学习速率。\\
+同理
+\begin{equation}
+q_{i}=q_{i}-\eta \cdot \frac{\partial J\left(q_{i}\right)}{\partial q_{i}}=q_{i}+\eta\left(e_{u i} \cdot p_{u}-\lambda \cdot q_{i}\right) .
+   \nonumber
+\end{equation}
+\end{example}
