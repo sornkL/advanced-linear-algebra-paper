@@ -1,15 +1,15 @@
 \section{牛顿迭代法}
 \subsection{牛顿迭代法的定义}
-    牛顿迭代法（Newton's method）是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。
+    牛顿迭代法(Newton's method)是牛顿在17世纪提出的一种在实数域和复数域上近似求解方程的方法。
     对于大多数方程而言求精确根非常困难，甚至存在不可解情况，
     从而求解这类方程的问题转为寻找方程的近似根。
     牛顿迭代法使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根。
-    假设目标函数$f(x)$在$x$处二阶可微，且当前的迭代点为$x_k$，
+    假设目标函数$f(x)$在$x$处二阶可微，且当前的迭代点为$x_k$,
     那么在出的泰勒展开时为
     \begin{equation}\label{ndddf1}
         f(x_k+d) = f_k + g_k^Td+\frac{1}{2}d^TG_kd + (\|d\|_2^2).
     \end{equation}
-    由于$d = x - x_k$，则式\ref{ndddf1}可转为式\ref{ndddf2}表达
+    由于$d = x - x_k$，则式\eqref{ndddf1}可转为式\eqref{ndddf2}表达
     \begin{equation}\label{ndddf2}
         \mathop{\mathrm{min}} q_k(d) = f_k + g_k^Td+\frac{1}{2}d^TG_kd.
     \end{equation}
@@ -59,41 +59,44 @@
         \begin{pmatrix}
             3x-y-2 \\
             -x+y  
-        \end{pmatrix}
+        \end{pmatrix},
     \nonumber
-    \end{equation},
+    \end{equation}
     由于$g_k=\nabla f(x,y)$，则
     \begin{equation}
     G = \nabla^2f(x,y) = 
         \begin{pmatrix}
             3 & -1\\
             -1 & 1   
-        \end{pmatrix}
+        \end{pmatrix}.
     \nonumber
-    \end{equation}.
-    将$x_0=-2,y_0=4$代入$g_k$，得到$g_0=$
-    \begin{pmatrix}
-        -12\\
-        6
-    \end{pmatrix},
+    \end{equation}
+    将$x_0=-2,y_0=4$代入$g_k$，得到
+    \begin{equation*}    
+        g_0=
+        \begin{pmatrix}
+            -12\\
+            6
+        \end{pmatrix},
+    \end{equation*}
     同时因为$G$为正定矩阵，则存在逆矩阵
     \begin{equation}
         G^{-1} = 
         \begin{pmatrix}
             \frac{1}{2} & \frac{1}{2} \\ 
             \frac{1}{2} & \frac{3}{2}
-        \end{pmatrix}
+        \end{pmatrix}.
     \nonumber
-    \end{equation}.
+    \end{equation}
     将$G^{-1}$代入牛顿迭代公式$x_{k+1} = x_k - G^{-1}g_K$，得到
     \begin{equation}
         x_1 = x_0 - G^{-1}*g_0 = 
         \begin{pmatrix}
             1 \\
             1
-        \end{pmatrix}
+        \end{pmatrix}.
     \nonumber
-    \end{equation}.
+    \end{equation}
     迭代直到满足终止条件。
 \end{solution}
 
@@ -128,7 +131,7 @@
         牛顿法缺点中，确定了迭代方向之后，迭代步长默认为1，
         但是这个迭代方向并不一定是朝着函数值下降的方向。
         所以阻尼牛顿法为了解决这个问题，
-        采取的做法是确定了迭代方向（和牛顿法一样的迭代方向）之后，
+        采取的做法是确定了迭代方向之后，
         还需要在该方向做一维搜索，
         寻找使得在该迭代方向上最优的迭代步长。
         即$x_{k+1}=x_k+\alpha_kd_k$，其中$\alpha_k$是一维搜索的结果。其优点是：对于正定的$G_k$，${f_k}$单调下降；
@@ -234,8 +237,8 @@
         \end{algorithm}
         
         \subsection{各种拟牛顿方法及其优缺点}
-            \subsubsection{SR1}\cite{1980Curvilinear}
-                SR1方法也即对对称秩1方法更新，根据$x_k$处的信息得到一个修正量$\Delta H_k$
+            \subsubsection{SR1}
+                SR1方法\cite{1980Curvilinear}也即对对称秩1方法更新，根据$x_k$处的信息得到一个修正量$\Delta H_k$
                 来直接加上$H_k$来更新，也就是如下的式子:
                 \begin{equation}
                     H_{k+1} = H_k + \Delta H_k
@@ -249,7 +252,7 @@
                 所以$\Delta H_k$也是对称矩阵。
                 SR1算法将$\Delta H_k$设为$\beta uu^T$，则迭代式为：
                 \begin{equation}
-                    H_{k+1} = H_{k} + \beta uu^T, \beta\in \mathbb{R}, u \in \mathbb{R}^{n}
+                    H_{k+1} = H_{k} + \beta uu^T, \beta\in \mathbb{R}, u \in \mathbb{R}^{n}.
                 \end{equation}
                 
                 \textbf{优点:}
@@ -266,13 +269,13 @@
                     另一方面，矩阵可以很好的逼近Hesse矩阵，
                     但是线搜索每一次只会利用到一个方向上的Hesse矩阵的信息
                     
-            \subsubsection{DFP}\cite{1963A}
-                DFP方法是在SR1的方法基础上对于$\Delta H$进行进一步更新，
+            \subsubsection{DFP}
+                DFP方法\cite{1963A}是在SR1的方法基础上对于$\Delta H$进行进一步更新，
                 相对于SR1令$\Delta H_k = \beta uu^T$，
                 DFP提供了更大的自由度，令$\Delta H_k = \beta uu^T + \gamma vv^T$，
                 则此时$H_k$的迭代更新式为：
                 \begin{equation}
-                    H_{k+1} = H_{k} + \beta uu^T + \gamma vv^T
+                    H_{k+1} = H_{k} + \beta uu^T + \gamma vv^T.
                 \end{equation}
                 
                 \textbf{优点:}
@@ -289,10 +292,10 @@
                 \textbf{缺点:}
                     DFP方法具有数值不稳定，有时产生数值上的Hesse近似。
                     
-            \subsubsection{BFGS}\cite{1989On}
-                BFGS在DFP的基础上，对于$\nabla^2f(x_k)$进行近似，令$B_k=\nabla^2f(x_k)$，得到
+            \subsubsection{BFGS}
+                BFGS方法\cite{1989On}在DFP方法的基础上，对于$\nabla^2f(x_k)$进行近似，令$B_k=\nabla^2f(x_k)$，得到
                 \begin{equation}
-                    B_{k+1} = B_k + \beta uu^T + \gamma vv^T
+                    B_{k+1} = B_k + \beta uu^T + \gamma vv^T.
                 \end{equation}
                 
                 \textbf{优点:}
@@ -327,7 +330,7 @@
                     $t_i=0.1i$,
                     $y_i=e^{-t_i}-5e^{-10t_i}+3e^{-4t_i}$.
                 
-                \begin{table}[htbp]\center\label{nndf1}
+                \begin{table}\label{nndf1}[htbp]\center
                     \caption{$\sigma = 0.1$时,SR1,BFGS与DFP三种方法的
                             \\迭代次数和函数调用次数}
                     \begin{tabular}{cccccccccccc}
@@ -350,7 +353,7 @@
                     \label{tableExample1}
                 \end{table}
                 
-                \begin{table}[htbp]\center\label{nndf2}
+                \begin{table}\label{nndf2}[htbp]\center
                     \caption{$\sigma = 0.1$时,SR1,BFGS与DFP三种方法的
                             \\所得解点$x_k$处的$\|g_k\|_\infty$}
                     \begin{tabular}{ccccccccccc}
