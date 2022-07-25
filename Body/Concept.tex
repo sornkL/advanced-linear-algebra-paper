@@ -2,12 +2,12 @@
 
 \subsection{适当函数}
 \begin{definition}
-    给定函数$f(\cdot)$和非空集合$X$，如果存在$x\in X$使得$f(x)< +\infty$，并且对$\forall x in X$，都有$f(x) > -\infty$，那么称函数$f(\cdot)$关于集合$X$是适当的。\cite{2004Convex}
+    给定函数$f(\cdot)$和非空集合$X$，如果存在$x\in X$使得$f(x)< +\infty$，并且对$\forall x \in X$，都有$f(x) > -\infty$，那么称函数$f(\cdot)$关于集合$X$是适当的。\cite{2004Convex}
 \end{definition}
 
 由定义可知，适当函数$f(\cdot)$具有在某个非空集合$X$上至少有一处取值不为正无穷，并且处处不为负无穷的特点。
 
-此外，规定适当函数$f(\cdot)$的定义域为$\mathop{\mathrm{dom}} (f) = \{x | f(x) < +\infty\}$.
+此外，规定适当函数$f(\cdot)$的定义域为$\mathop{\mathrm{dom}} (f) = \{x | f(x) < +\infty\}$。
 
 \subsection{凸函数}
 首先引入凸集的概念，直观来看凸集就是任取集合中的两点，其构成的线段都在集合内就称为凸集\cite{2004Convex}，下面给出具体的定义。
@@ -117,7 +117,6 @@
         \begin{split}
             g(\theta x + (1-\theta)y) &\leq \theta g(x) + (1-\theta) g(y) \\
             f(\theta x + (1-\theta)y) - \frac{m}{2}\|\theta x+(1-\theta)y\|_{2}^{2} &\leq \theta(f(x)-\frac{m}{2}\|x\|_{2}^{2}) + (1-\theta) (f(y)-\frac{m}{2}\|y\|_{2}^{2}) \\
-            f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta) f(y) + \frac{m}{2}\theta \|x\|_{2}^{2} - frac{m}{2}(1-\theta)\|y\|_{2}^{2} + \frac{m}{2}\|\theta x + (1-\theta)y\|_{2}^{2} \\
             f(\theta x + (1-\theta)y) &\leq \theta f(x) + (1-\theta) f(y) + \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2}.
         \end{split}
     \end{equation*}
@@ -639,8 +638,8 @@ f(\bm{y}) \leq f\left(\bm{x}_{\lambda}\right)+\left\langle\nabla f\left(\bm{x}_{
 将$x_{\lambda}  $代入上面两个等式，可以得到
 \begin{equation}
 \begin{array}{c}
-f(\bm{x}) \leq f\left(\bm{x}_{\lambda}\right)+(1-\lambda)\left\langle\nabla f\left(\bm{x}_{\lambda}\right), \bm{x}-\bm{y}\right\rangle+\frac{L(1-L)^{2}}{2}\|\bm{x}-\bm{y}\|^{2} , \\
-f(\bm{y}) \leq f\left(\bm{x}_{\lambda}\right)+\lambda\left\langle\nabla f\left(\bm{x}_{\lambda}\right), \bm{y}-\bm{x}\right\rangle+\frac{L \lambda^{2}}{2}\|\bm{x}-\bm{y}\|^{2} .
+f(\bm{x}) &\leq f\left(\bm{x}_{\lambda}\right)+(1-\lambda)\left\langle\nabla f\left(\bm{x}_{\lambda}\right), \bm{x}-\bm{y}\right\rangle+\frac{L(1-L)^{2}}{2}\|\bm{x}-\bm{y}\|^{2} , \\
+f(\bm{y}) &\leq f\left(\bm{x}_{\lambda}\right)+\lambda\left\langle\nabla f\left(\bm{x}_{\lambda}\right), \bm{y}-\bm{x}\right\rangle+\frac{L \lambda^{2}}{2}\|\bm{x}-\bm{y}\|^{2} .
 \end{array}
     \nonumber
 \end{equation}
@@ -889,7 +888,6 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
     \end{equation}
 \end{example}
 
-\subsection{Weierstrass定理}
 考虑优化问题
 
 \begin{equation}

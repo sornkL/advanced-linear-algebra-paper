@@ -1,9 +1,9 @@
 \section{梯度下降法}梯度下降法(Gradient Descent, GD)是求解无约束优化问题的一种最常见的方法\cite{6302929}，在最优化、统计学以及机器学习等领域都有着广泛的应用，例如用梯度下降法求解最小二乘问题\cite{1989Least}，在本章的末尾会有相应例题。对于无约束最优化问题：
 \begin{equation}
-    \min _{x}\left\{f(\bm{x}) \mid \bm{x} \in \mathbb{R}^{n}\right\} ,
+    \min _{\bm{x}}\left\{f(\bm{x}) \mid \bm{x} \in \mathbb{R}^{n}\right\} ,
     \label{eqt5_1}
 \end{equation}
-其中目标函数$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$是连续可微$L$-光滑的函数。最优化问题\ref{eqt5_1}可以看作为一般问题\ref{eqt1_11}不加约束的特殊情况。由推论\ref{the1_4}可知，凸优化问题的最优解等价于梯度为零的解，即 $\bm{x}$ 满足$\nabla f(\bm{x})=0$。如果$\nabla f(\bm{x}) \neq 0$，那么根据函数$\bm{f(\bm{x})}$在$\bm{x}$处泰勒展开的性质可知，一定存在$\delta$，使得
+其中目标函数$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$是连续可微$L$-光滑的函数。最优化问题\ref{eqt5_1}可以看作为一般问题\ref{eqt1_11}不加约束的特殊情况。由推论\ref{the1_4}可知，凸优化问题的最优解等价于梯度为零的解，即 $\bm{x}$ 满足$\nabla f(\bm{x})=0$。如果$\nabla f(\bm{x}) \neq 0$，那么根据函数$f(\bm{x})$在$\bm{x}$处泰勒展开的性质可知，一定存在$\delta$，使得
 \begin{equation}
     f(\bm{x}-\alpha \nabla f(\bm{x}))<f(\bm{x}), \quad \forall \alpha \in(0, \delta) .
     \label{eqt5_2}
