@@ -20,6 +20,11 @@
     解得的方向$d_k$为牛顿方向。
     用牛顿方向作为迭代方向的最优化方法称为牛顿方法。
     特别的，全步长$\alpha_k=1$的牛顿方法称为基本牛顿方法。
+    \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=100mm]{./Figures/newton.png}
+        \caption{牛顿迭代法过程}
+    \end{figure}
     \begin{algorithm}
         \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
         \SetAlgoLined
@@ -31,6 +36,96 @@
         }
         \caption{牛顿迭代法的算法}
     \end{algorithm}
+
+\subsection{海塞矩阵}
+海塞矩阵(Hesse矩阵)，是一个多元函数的二阶偏导数构成的方阵，常用于牛顿法解决优化问题：
+若一元函数$f(x)$在$x=x_0$点的某个邻域内具有任意阶导数，则$f(x)$在$x_0$点处的泰勒展开式为：
+\begin{equation}
+    f(x) = f(x_0) + f'(x_0)\Delta x + \frac{1}{2}f''(x_0)(\Delta x)^2 + ..., \Delta x = x - x_0 .
+\end{equation}
+
+二元函数$f(x_1,x_2)$在$X_0(x_0,y_0)$点处的泰勒展开式为：
+\begin{equation}
+    f(x,y) = f(x_0,y_0)
+        + \left.\displaystyle\frac{\partial f}{\partial x}\right|_{X_0}\Delta x_0    
+        + \left.\displaystyle\frac{\partial f}{\partial y}\right|_{X_0}\Delta y_0    
+        + \frac{1}{2}
+        \left[ \left.\displaystyle\frac{\partial^2f}{\partial x^2}\right|_{X_0}\Delta x_0^2 + 
+            2\left.\displaystyle\frac{\partial^2f}{\partial x\partial y}\right|_{X_0}\Delta x_0\Delta y_0 + 
+            \left.\displaystyle\frac{\partial^2f}{\partial y^2}\right|_{X_0}\Delta y_0^2 \right]   
+        + ...
+\end{equation}
+其中$\Delta x = x - x_0$,$\Delta y = y - y_0$.
+将上述展开式写成矩阵形式，则有：
+\begin{equation}
+    f(X) = f(X_0) 
+    + \left.( \displaystyle\frac{\partial f}{\partial x},
+        \displaystyle\frac{\partial f}{\partial y} )\right|_{X_0}    
+        \begin{pmatrix}
+                \Delta x \\
+                \Delta y
+        \end{pmatrix}
+    +\newline \frac{1}{2}(\Delta x, \Delta y)
+        \left.
+        \begin{pmatrix}
+            \displaystyle\frac{\partial^2f}{\partial x^2} & \displaystyle\frac{\partial^2f}{\partial x\partial y} \\
+            \displaystyle\frac{\partial^2f}{\partial y\partial x} & \displaystyle\frac{\partial^2f}{\partial y^2}
+        \end{pmatrix}
+        \right|_{X_0}
+        \begin{pmatrix}
+                \Delta x \\
+                \Delta y
+        \end{pmatrix} .
+\end{equation}
+用矩阵表示，则上式可以转化为
+\begin{equation}
+    f(X) = f(X_0) + \nabla f(X_0)^{\mathbb{T}}\Delta X + \frac{1}{2}X^{\mathbb{T}}G(X_0)\Delta X + ...\quad,
+\end{equation}
+其中：
+\begin{equation}
+    G(X_0) = 
+        \left.
+        \begin{pmatrix}
+            \displaystyle\frac{\partial^2f}{\partial x^2} & \displaystyle\frac{\partial^2f}{\partial x\partial y} \\
+            \displaystyle\frac{\partial^2f}{\partial y\partial x} & \displaystyle\frac{\partial^2f}{\partial y^2}
+        \end{pmatrix}
+        \right|_{X_0},
+    \Delta X = 
+        \begin{pmatrix}
+                \Delta x \\
+                \Delta y
+        \end{pmatrix}.
+\end{equation}
+$G(X_0)$是$f(x,y)$在$X_0$点处的Hesse矩阵。它是由函$f(x,y)$在$X_0$点处的二阶偏导数所组成的方阵。
+将二元函数的泰勒展开式推广到多元函数，则$f(x_1,x_2...,x_n)$在$X_0$点处的泰勒展开式的矩阵形式为：
+\begin{equation}
+    f(X) = f(X_0) + \nabla f(X_0)^T\Delta X + \frac{1}{2}X^TG(X_0)\Delta X + ...\quad,
+\end{equation}
+其中：
+
+（1）$\nabla f(X_0) =
+    \left.
+    \begin{pmatrix}
+        \displaystyle\frac{\partial f}{\partial x_1},
+        \displaystyle\frac{\partial f}{\partial x_2},
+        ...,
+        \displaystyle\frac{\partial f}{\partial x_n} 
+    \end{pmatrix}\right|_{X_0}^T$，它是$f(X)$在$X_0$点处的梯度。
+        
+（2）$ G(X_0) = 
+        \left.
+        \begin{pmatrix}
+            \displaystyle\frac{\partial^2f}{\partial x_1^2} & \displaystyle\frac{\partial^2f}{\partial x_1\partial x_2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_1\partial x_n}\\
+            \displaystyle\frac{\partial^2f}{\partial x_2\partial x_1} & \displaystyle\frac{\partial^2f}{\partial x_2^2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_2\partial x_n}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            \displaystyle\frac{\partial^2f}{\partial x_n\partial x_1} & \displaystyle\frac{\partial^2f}{\partial x_n\partial x_2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_n^2}\\
+        \end{pmatrix}
+        \right|_{X_0}$
+        为$f(X)$在$X_0$点处的Hesse矩阵。
+\begin{definition}[Hesse矩阵]
+    Hesse矩阵是由目标函数 $f(\cdot)$ 在点 $X$ 处的二阶偏导数组成的 $n\times n$ 阶对称矩阵。       
+\end{definition}
+    
     
 \subsection{牛顿迭代法算例}
 \begin{example}

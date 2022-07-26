@@ -1,56 +1,3 @@
-\section{附录}
-
-论文的源文件与源代码请参阅\href{https://github.com/sornkL/advanced-linear-algebra-paper}{https://github.com/sornkL/advanced-linear-algebra-paper}
-
-\subsection{环境要求}
-Python >= 3
-
-Numpy == 1.18.1
-
-Matplotlib == 3.1.3
-
-\subsection{梯度下降法求解最小二乘问题}
-\begin{lstlisting}
-import numpy as np
-import matplotlib.pyplot as plt
-np.random.seed(1234)
-
-len_x = 1000
-A = np.random.rand(len_x, len_x)
-x_star = np.random.rand(len_x, 1)
-b = A*x_star
-my_x = np.random.rand(len_x, 1)
-
-def get_grad(x):
-    return 2*A.T*(A*x-b)
-
-def get_loss(x):
-    return np.linalg.norm(A*x-b, ord=1)**2
-
-delta = 1e10
-alpha = 5e-1
-iter = 0
-iter_list = []
-delta_list = []
-# while delta > 1e-4:
-# 手动设置迭代1000次
-while iter<1e3:
-    new_x = my_x - alpha*get_grad(my_x)
-    delta = np.linalg.norm(new_x - x_star, ord=2) / np.linalg.norm(x_star, ord=2)
-    iter_list.append(iter)
-    delta_list.append(np.log(delta))
-    print(f'{iter}, loss is {get_loss(my_x)}, rela_x is {delta}')
-    my_x = new_x
-    iter += 1
-
-plt.plot(iter_list, delta_list)
-plt.xlabel('epoch')
-plt.ylabel('log ||newx-x||')
-plt.savefig('gd-loss.png', dpi=400)
-\end{lstlisting}
-
-\subsection{临近梯度下降法求解Lasso问题}
-\begin{lstlisting}
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -120,10 +67,8 @@ def proximal_gradient_descent(A, x, b, mu, learning_rate):
     
     curve, = plt.plot(iterationList, deltaList, '-')
     return curve
-\end{lstlisting}
 
-\subsection{交替方向乘子法求解Lasso问题}
-\begin{lstlisting}
+
 def admm(A, x, b, mu, beta, lamb, rho):
     x1 = x
     x2 = x
@@ -145,4 +90,30 @@ def admm(A, x, b, mu, beta, lamb, rho):
 
     curve, = plt.plot(iterationList, deltaList, '-')
     return curve
-\end{lstlisting}
+
+
+
+if __name__ == '__main__':
+    curves = []
+    labels = []
+    for alpha in [1e-07, 3e-07, 6e-07, 1e-06, 3e-06, 6e-06]:
+        curves.append(proximal_gradient_descent(A, my_x, b, mu, learning_rate=alpha))
+        labels.append('alpha={0}'.format(str(alpha)))
+    plt.legend(handles=curves, labels=labels)
+    plt.xlabel('epoch')
+    plt.ylabel('f(x)')
+    plt.savefig('codes/prox.png', dpi=400)
+    
+    # factor = [0.1, 1]
+    # curves = []
+    # labels = []
+    # for beta in factor:
+    #     for lamb in factor:
+    #         for rho in factor:
+    #             curves.append(admm(A, my_x, b, mu, beta=beta, lamb=lamb, rho=rho))
+    #             labels.append('beta={0}, lambda={1}, rho={2}'.format(beta, lamb, rho))
+    
+    # plt.legend(handles=curves, labels=labels)
+    # plt.xlabel('epoch')
+    # plt.ylabel('f(x)')
+    # plt.savefig('codes/admm.png', dpi=400)

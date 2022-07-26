@@ -7,7 +7,7 @@
 
 由定义可知，适当函数$f(\cdot)$具有在某个非空集合$X$上至少有一处取值不为正无穷，并且处处不为负无穷的特点。
 
-此外，规定适当函数$f(\cdot)$的定义域为$\mathop{\mathrm{dom}} (f) = \{x | f(x) < +\infty\}$.
+此外，规定适当函数$f(\cdot)$的定义域为$\mathop{\mathrm{dom}} (f) = \{x | f(x) < +\infty\}$。
 
 \subsection{凸函数}
 首先引入凸集的概念，直观来看凸集就是任取集合中的两点，其构成的线段都在集合内就称为凸集，下面给出具体的定义。
@@ -57,6 +57,7 @@
     设函数$f(\cdot)$是适当函数，如果$\mathop{\mathrm{dom}} (f)$是凸集，且对$\forall x, y\in \mathop{\mathrm{dom}} (f), 0\leq \theta \leq 1$，都有
     \begin{equation}
         f(\theta x+(1-\theta)y) \leq \theta f(x) + (1-\theta)f(y),
+        \nonumber
     \end{equation}
     则称这样的$f(\cdot)$为凸函数；如果同时还满足$\forall x, y\in \mathop{\mathrm{dom}} (f), x \neq y, 0<\theta<1$，则称这样的$f(\cdot)$为严格凸函数。
 \end{definition}
@@ -78,6 +79,7 @@
     若存在常数$m>0$，使得
     \begin{equation}
         g(x) = f(x) - \frac{m}{2}\|x\|_{2}^{2} ,
+        \nonumber
     \end{equation}
     为凸函数，则称这样的$f(\cdot)$为强凸函数或$m$-强凸函数，$m$称为强凸参数。
 \end{definition}
@@ -88,6 +90,7 @@
     若存在常数$m>0$，使得对$\forall x, y \in \mathop{\mathrm{dom}} (f), 0<\theta<1$，有
     \begin{equation}
         f(\theta x+(1-\theta y)) \leq \theta f(x) + (1-\theta)f(y) - \frac{m}{2}\theta(1-\theta)\|x-y\|_{2}^{2} ,
+        \nonumber
     \end{equation}
     则称这样的$f(\cdot)$为强凸函数或$m$-强凸函数，$m$称为强凸参数。
 \end{definition}
@@ -133,7 +136,6 @@
 \end{theorem}
 \begin{proof}
     由$f_{1}, f_{2}$是凸函数可知，对$\forall x, y\in \mathop{\mathrm{dom}} (f), 0\leq \theta \leq 1$有
-
     \begin{equation*}
         \begin{split}
             f_{1}(\theta x+(1-\theta)y)+f_{2}(\theta x+(1-\theta)y) &\leq \theta f_{1}(x)+(1-\theta)f_{1}(y) + \theta f_{2}(x)+(1-\theta)f_{2}(y) \\
@@ -249,95 +251,6 @@
     \end{equation}
 \end{definition}
 
-\subsection{海塞矩阵}
-海塞矩阵(Hesse矩阵)，是一个多元函数的二阶偏导数构成的方阵，常用于牛顿法解决优化问题：
-若一元函数$f(x)$在$x=x_0$点的某个邻域内具有任意阶导数，则$f(x)$在$x_0$点处的泰勒展开式为：
-\begin{equation}
-    f(x) = f(x_0) + f'(x_0)\Delta x + \frac{1}{2}f''(x_0)(\Delta x)^2 + ..., \Delta x = x - x_0 .
-\end{equation}
-
-二元函数$f(x_1,x_2)$在$X_0(x_0,y_0)$点处的泰勒展开式为：
-\begin{equation}
-    f(x,y) = f(x_0,y_0)
-        + \left.\displaystyle\frac{\partial f}{\partial x}\right|_{X_0}\Delta x_0    
-        + \left.\displaystyle\frac{\partial f}{\partial y}\right|_{X_0}\Delta y_0    
-        + \frac{1}{2}
-        \left[ \left.\displaystyle\frac{\partial^2f}{\partial x^2}\right|_{X_0}\Delta x_0^2 + 
-          2\left.\displaystyle\frac{\partial^2f}{\partial x\partial y}\right|_{X_0}\Delta x_0\Delta y_0 + 
-          \left.\displaystyle\frac{\partial^2f}{\partial y^2}\right|_{X_0}\Delta y_0^2 \right]   
-        + ...
-\end{equation}
-其中$\Delta x = x - x_0$,$\Delta y = y - y_0$.
-将上述展开式写成矩阵形式，则有：
-\begin{equation}
-    f(X) = f(X_0) 
-    + \left.( \displaystyle\frac{\partial f}{\partial x},
-        \displaystyle\frac{\partial f}{\partial y} )\right|_{X_0}    
-        \begin{pmatrix}
-             \Delta x \\
-             \Delta y
-        \end{pmatrix}
-    +\newline \frac{1}{2}(\Delta x, \Delta y)
-        \left.
-        \begin{pmatrix}
-            \displaystyle\frac{\partial^2f}{\partial x^2} & \displaystyle\frac{\partial^2f}{\partial x\partial y} \\
-            \displaystyle\frac{\partial^2f}{\partial y\partial x} & \displaystyle\frac{\partial^2f}{\partial y^2}
-        \end{pmatrix}
-        \right|_{X_0}
-        \begin{pmatrix}
-             \Delta x \\
-             \Delta y
-        \end{pmatrix} .
-\end{equation}
-用矩阵表示，则上式可以转化为
-\begin{equation}
-    f(X) = f(X_0) + \nabla f(X_0)^{\mathbb{T}}\Delta X + \frac{1}{2}X^{\mathbb{T}}G(X_0)\Delta X + ...\quad,
-\end{equation}
-其中：
-\begin{equation}
-    G(X_0) = 
-        \left.
-        \begin{pmatrix}
-            \displaystyle\frac{\partial^2f}{\partial x^2} & \displaystyle\frac{\partial^2f}{\partial x\partial y} \\
-            \displaystyle\frac{\partial^2f}{\partial y\partial x} & \displaystyle\frac{\partial^2f}{\partial y^2}
-        \end{pmatrix}
-        \right|_{X_0},
-    \Delta X = 
-        \begin{pmatrix}
-             \Delta x \\
-             \Delta y
-        \end{pmatrix}.
-\end{equation}
-$G(X_0)$是$f(x,y)$在$X_0$点处的Hesse矩阵。它是由函$f(x,y)$在$X_0$点处的二阶偏导数所组成的方阵。
-将二元函数的泰勒展开式推广到多元函数，则$f(x_1,x_2...,x_n)$在$X_0$点处的泰勒展开式的矩阵形式为：
-\begin{equation}
-    f(X) = f(X_0) + \nabla f(X_0)^T\Delta X + \frac{1}{2}X^TG(X_0)\Delta X + ...\quad,
-\end{equation}
-其中：
-
-（1）$\nabla f(X_0) =
-    \left.
-    \begin{pmatrix}
-        \displaystyle\frac{\partial f}{\partial x_1},
-        \displaystyle\frac{\partial f}{\partial x_2},
-        ...,
-        \displaystyle\frac{\partial f}{\partial x_n} 
-    \end{pmatrix}\right|_{X_0}^T$，它是$f(X)$在$X_0$点处的梯度。
-        
-（2）$ G(X_0) = 
-        \left.
-        \begin{pmatrix}
-            \displaystyle\frac{\partial^2f}{\partial x_1^2} & \displaystyle\frac{\partial^2f}{\partial x_1\partial x_2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_1\partial x_n}\\
-            \displaystyle\frac{\partial^2f}{\partial x_2\partial x_1} & \displaystyle\frac{\partial^2f}{\partial x_2^2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_2\partial x_n}\\
-            \vdots & \vdots & \ddots & \vdots\\
-            \displaystyle\frac{\partial^2f}{\partial x_n\partial x_1} & \displaystyle\frac{\partial^2f}{\partial x_n\partial x_2} & \cdots & \displaystyle\frac{\partial^2f}{\partial x_n^2}\\
-        \end{pmatrix}
-        \right|_{X_0}$
-        为$f(X)$在$X_0$点处的Hesse矩阵。
-\begin{definition}[Hesse矩阵]
-    Hesse矩阵是由目标函数 $f(\cdot)$ 在点 $X$ 处的二阶偏导数组成的 $n\times n$ 阶对称矩阵。       
-\end{definition}
-
 % 8
 \subsection{李普希茨连续可微与$L$-光滑性质}
 \begin{definition}[李普希茨连续]
@@ -350,7 +263,7 @@ $G(X_0)$是$f(x,y)$在$X_0$点处的Hesse矩阵。它是由函$f(x,y)$在$X_0$�
 \end{definition}
 
 \begin{definition}[$L$-光滑]
-    给定$L \geq 0$, 函数$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$定义在集合$\mathcal{D}$上是可微的，且满足
+    给定$L \geq 0$，函数$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$定义在集合$\mathcal{D}$上是可微的，且满足
 \begin{equation}
     \|\nabla f(\bm{x})-\nabla f(\bm{y})\| \leq L\|\bm{x}-\bm{y}\|, \quad \forall \bm{x}, \bm{y} \in \mathcal{D},
     \nonumber
@@ -624,7 +537,7 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
     在目标函数上选一点$\bm{x}_k+1=\bm{x}_k−\alpha f′(\bm{x}_k)$，使得目标函数逐渐下降。为了收敛到梯度为0的点，需要满足$f(\bm{x}_{k+1})<f(\bm{x}_k)$，即函数值需呈下降趋势，$\bm{x}_{k+1}$不能距离$\bm{x}_k$过于近，即步长$\alpha$不能过小，同时确保目标函数值有足够下降。
 \end{definition}
 
-\begin{definition}[Wolfe准则]
+\begin{definition}[Wolfe准则]\cite{2009Modified}
 
     Wolfe 准则主要用于线搜索，由Armijo准则和curvature条件共同组成。
     由上式\ref{wf1}可知，Armijo是充分下降条件，
@@ -673,7 +586,7 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
         假设$\nabla g(\bm{x}^*)\neq0$。
         令$\bm{s}^* = -\nabla g(\bm{x}^*)$，则
         \begin{equation*}
-            \nabla g(\bm{x}^*)^T\bm{s}^* = - \|\nabla g(\bm{x}^*)\|^2 < 0
+            \nabla g(\bm{x}^*)^T\bm{s}^* = - \|\nabla g(\bm{x}^*)\|^2 < 0 ,
         \end{equation*}
         由于$\bm{s}^*$是$g$在$\bm{x}^*$处的下降方向，
         $\bm{x}^*$不是局部最优解，与条件矛盾。
@@ -702,7 +615,7 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
             f(\bm{x}^*+\lambda\bm{s}) \geq 
             f(\bm{x}^*) ,
         \end{equation*}
-        代入\ref{ejbyx}得
+        代入式\ref{ejbyx}得
         \begin{equation*}
             \displaystyle\frac{1}{2}\bm{s}^T\nabla^2g(\bm{x}^*)\bm{s} + \displaystyle\frac{o(\lambda^2)}{\lambda^2} \geq 0 .
         \end{equation*}
@@ -735,7 +648,7 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
         \begin{equation*}
             \displaystyle\frac{1}{2}\bm{s}^T\nabla^2g(\bm{x}^*)\bm{s} + \displaystyle\frac{o(\lambda^2)}{\lambda^2} >  0  .        
         \end{equation*}
-        代入\ref{ejbyx1}得知，
+        代入式\ref{ejbyx1}得知，
         当$0 < \|\bm{x} - \bm{x}^*\| = \lambda < \epsilon$时有$g(\bm{x}) > g(\bm{x}^*)$。
         得证。
     \end{proof}
@@ -747,7 +660,7 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
 \begin{array}{ll}
 \min _{x} & f(\bm{x}) \\
 \text { s.t. } & f_{i}(\bm{x}) \leq 0, i=1, \cdots, m ,\\
-& h_{j}(\bm{x})=0, j=1, \cdots, p ,
+& h_{j}(\bm{x})=0, j=1, \cdots, p .
 \end{array}
 \label{eqt1_11}
 \end{equation}
@@ -756,13 +669,13 @@ f(\bm{y}) \leq f(\bm{x})+f^{\prime}(\bm{x} ; \bm{y}-\bm{x})+\frac{L}{2}\|\bm{x}-
 p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm{x})=0, j=1, \cdots, p\right\} .
     \nonumber
 \end{equation}
-如果$  p^{*}=\infty $，那么称该优化问题是不可行的 (满足约束条件的可行点集 合为空集）；如果$  p^{*}=-\infty $， 那么称该最优化问题是无下界的\cite{2004Convex}。进一步，若$  \bm{x} \in \operatorname{dom}(f)  $且满足所有不等式与等式约束，则认为$ \bm{x}  $是一个可行解 (feasible solution)，所有可行解构成的集合为$X_{f e a}$。如果$  f(\bm{x})=p^{*} $，则该可行解$  \bm{x}  $为最优解，而最优解集合可以记为$X_{\text {opt }}  $。如果存在$  r>0 $，且$  \hat{\bm{x}}  $是下面问题的最优解：
+如果$  p^{*}=\infty $，那么称该优化问题是不可行的（满足约束条件的可行点集合为空集）；如果$  p^{*}=-\infty $， 那么称该最优化问题是无下界的\cite{2004Convex}。进一步，若$  \bm{x} \in \operatorname{dom}(f)  $且满足所有不等式与等式约束，则认为$ \bm{x}  $是一个可行解 (feasible solution)，所有可行解构成的集合为$X_{f e a}$。如果$  f(\bm{x})=p^{*} $，则该可行解$  \bm{x}  $为最优解，而最优解集合可以记为$X_{\text {opt }}  $。如果存在$  r>0 $，且$  \hat{\bm{x}}  $是下面问题的最优解：
 \begin{equation}
 \begin{array}{ll}
 \min & f(\bm{x}) \\
 \text { s.t. } & f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, \\
 & h_{j}(\bm{x})=0, j=1, \cdots, p, \\
-& \|\bm{x}-\hat{\bm{x}}\|_{2} \leq r,
+& \|\bm{x}-\hat{\bm{x}}\|_{2} \leq r.
 \end{array}
     \nonumber
 \end{equation}
@@ -771,7 +684,7 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 \begin{array}{ll}
 \text{find } & \bm{x}  \\
 \text { s.t. } & f_{i}(\bm{x}) \leq 0, i=1, \cdots, m ,\\
-& h_{j}(\bm{x})=0, j=1, \cdots, p,
+& h_{j}(\bm{x})=0, j=1, \cdots, p.
 \end{array}
     \nonumber
 \end{equation}
@@ -791,7 +704,7 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 \begin{array}{ll}
 \min & f(\bm{x}) \\
 \text { s.t. } & f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, \\
-& \bm{a}_{j}^{\top} \bm{x}=b_{j}, j=1, \cdots, p,
+& \bm{a}_{j}^{\top} \bm{x}=b_{j}, j=1, \cdots, p.
 \end{array}
     \label{eqt1_13}
 \end{equation}
@@ -840,9 +753,9 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
 
 \begin{theorem}[Weierstrass定理]
     考虑适当闭函数$f: X \rightarrow (-\infty, +\infty]$，假设下面3个条件中的任意一个成立：
-    (1) $\mathop{\mathrm{dom}} (f):=\{x\in X: f(x) < +\infty\}$；
-    (2) 存在常数$\gamma$使集合$C_{\gamma}:=\{x\in X: f(x) \leq \gamma\}$是非空有界的；
-    (3) $f(\cdot)$满足对任意的点列$\{x^{k}\}\subset X, \|x^{k}\|\rightarrow +\infty$，都有$\lim\limits_{k\rightarrow \infty} f(x^{k})=+\infty$。
+ \par   (1) $\mathop{\mathrm{dom}} (f):=\{x\in X: f(x) < +\infty\}$；
+ \par   (2) 存在常数$\gamma$使集合$C_{\gamma}:=\{x\in X: f(x) \leq \gamma\}$是非空有界的；
+ \par   (3) $f(\cdot)$满足对任意的点列$\{x^{k}\}\subset X, \|x^{k}\|\rightarrow +\infty$，都有$\lim\limits_{k\rightarrow \infty} f(x^{k})=+\infty$。 \\
 则对于上述的优化问题存在非空的最小点集$\{x\in X | f(x) \leq f(y), \forall y\in X\}$。
 \end{theorem}
 \begin{proof}
@@ -863,23 +776,23 @@ p^{*}=\min \left\{f(\bm{x}) \mid f_{i}(\bm{x}) \leq 0, i=1, \cdots, m, h_{j}(\bm
     f(\bm{y})<f(\bm{x}) .
         \nonumber
     \end{equation}
-因为$\bm{x}$是局部最优化，所以存在一个$  r>0  $使得
+    因为$\bm{x}$是局部最优化，所以存在一个$  r>0  $使得
     \begin{equation}
     \forall \bm{z} \in\left\{\bm{z} \mid \bm{z} \in X_{\text {fea }},\|\bm{z}-\bm{x}\|_{2} \leq r\right\} \quad \Rightarrow \quad f(\bm{z}) \geq f(\bm{x}),
         \nonumber
     \end{equation}
-进一步考虑
-\begin{equation}
-\hat{\bm{z}}=\theta \bm{y}+(1-\theta) \bm{x}, \quad \theta=\frac{r}{2\|\bm{y}-\bm{x}\|_{2}} ,
-    \nonumber
-\end{equation}
-我们得到
-\par -$  \|\bm{y}-\bm{x}\|>r $，所以$  0<\theta<\frac{1}{2} $;
-\par -$  \hat{\bm{z}}  $是两个可行点$\bm{x}$和$\bm{y}$的凸组合, 所以$  \hat{\bm{z}} \in X_{f e a} $；
-\par - 因为$  \|\hat{\bm{z}}-\bm{x}\|_{2}=\frac{r}{2}<r $，所以
-\begin{equation}
-f(\hat{\bm{z}}) \leq \theta f(\bm{y})+(1-\theta) f(\bm{x})<f(\bm{x}),
-    \nonumber
-\end{equation}
-这与$\bm{x}$是局部最优的假设是矛盾的，所以原定理的结论成立。\\
+    进一步考虑
+    \begin{equation}
+    \hat{\bm{z}}=\theta \bm{y}+(1-\theta) \bm{x}, \quad \theta=\frac{r}{2\|\bm{y}-\bm{x}\|_{2}} ,
+        \nonumber
+    \end{equation}
+    我们得到
+    \par -$  \|\bm{y}-\bm{x}\|>r $，所以$  0<\theta<\frac{1}{2} $;
+    \par -$  \hat{\bm{z}}  $是两个可行点$\bm{x}$和$\bm{y}$的凸组合, 所以$  \hat{\bm{z}} \in X_{f e a} $；
+    \par - 因为$  \|\hat{\bm{z}}-\bm{x}\|_{2}=\frac{r}{2}<r $，所以
+    \begin{equation}
+    f(\hat{\bm{z}}) \leq \theta f(\bm{y})+(1-\theta) f(\bm{x})<f(\bm{x}),
+        \nonumber
+    \end{equation}
+    这与$\bm{x}$是局部最优的假设是矛盾的，所以原定理的结论成立。
 \end{proof}
